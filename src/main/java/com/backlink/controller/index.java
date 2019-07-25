@@ -11,4 +11,8 @@ public class index {
 	public String viewIndex() {
 		return "index";
 	}
+	@RequestMapping(value = {"", "index"}, method = RequestMethod.GET)
+	public String viewIndex() {
+		return "login";
+	}
 }
