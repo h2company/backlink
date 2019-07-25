@@ -68,13 +68,13 @@
                     <div class="card-body">
                         <form class="form-horizontal" action="index.html" novalidate="">
                             <fieldset class="form-group position-relative has-icon-left">
-                                <input type="text" class="form-control round" id="user-name" placeholder="Your Username" required="">
+                                <input type="text" class="form-control round" id="user-name" placeholder="Tên đăng nhập" required="">
                                 <div class="form-control-position">
                                     <i class="ft-user"></i>
                                 </div>
                             </fieldset>
                             <fieldset class="form-group position-relative has-icon-left">
-                                <input type="password" class="form-control round" id="user-password" placeholder="Enter Password" required="">
+                                <input type="password" class="form-control round" id="user-password" placeholder="Mật khẩu" required="">
                                 <div class="form-control-position">
                                     <i class="ft-lock"></i>
                                 </div>
@@ -83,22 +83,22 @@
                                 <div class="col-md-6 col-12 text-center text-sm-left">
                                    
                                 </div>
-                                <div class="col-md-6 col-12 float-sm-left text-center text-sm-right"><a href="recover-password.html" class="card-link">Forgot Password?</a></div>
+                                <div class="col-md-6 col-12 float-sm-left text-center text-sm-right"><a href="forgotpassword.html" class="card-link">Quên mật khẩu?</a></div>
                             </div>                           
                             <div class="form-group text-center">
-                                <button type="submit" class="btn round btn-block btn-glow btn-bg-gradient-x-purple-blue col-12 mr-1 mb-1">Login</button>    
+                                <button type="submit" class="btn round btn-block btn-glow btn-bg-gradient-x-purple-blue col-12 mr-1 mb-1">Đăng nhập</button>    
                             </div>
                            
                         </form>
                     </div>
-                    <p class="card-subtitle line-on-side text-muted text-center font-small-3 mx-2 my-2 "><span>OR Sign Up Using</span></p>
+                    <p class="card-subtitle line-on-side text-muted text-center font-small-3 mx-2 my-2 "><span>Hoặc đăng nhập với</span></p>
                     <div class="text-center">
                         <a href="#" class="btn btn-social-icon round mr-1 mb-1 btn-facebook"><span class="ft-facebook"></span></a>
                         <a href="#" class="btn btn-social-icon round mr-1 mb-1 btn-twitter"><span class="ft-twitter"></span></a>
                         <a href="#" class="btn btn-social-icon round mr-1 mb-1 btn-instagram"><span class="ft-instagram"></span></a>
                     </div>
                     
-                    <p class="card-subtitle text-muted text-right font-small-3 mx-2 my-1"><span>Don't have an account ? <a href="register.html" class="card-link">Sign Up</a></span></p>                    
+                    <p class="card-subtitle text-muted text-right font-small-3 mx-2 my-1"><span>Bạn chưa có tài khoản ? <a href="register.html" class="card-link">Đăng ký</a></span></p>                    
                 </div>
             </div>
         </div>

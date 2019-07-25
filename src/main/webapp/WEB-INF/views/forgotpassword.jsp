@@ -59,30 +59,30 @@
                         <img src="app-assets\images\logo\logo.png" alt="branding logo">
                     </div>
                     <div class="font-large-1  text-center">
-                        Recover Password
+                        Đặt lại mật khẩu
                     </div>
                     <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2">
-                        <span>We will send you a link to reset password.</span>
+                        <span>Chúng tối đã gửi mail cho bạn để đặt lại mật khẩu</span>
                     </h6>
                 </div>
                 <div class="card-content">
                     <div class="card-body">
                         <form class="form-horizontal" action="login-simple.html" novalidate="">
                             <fieldset class="form-group position-relative has-icon-left">
-                                <input type="email" class="form-control round" id="user-email" placeholder="Your Email Address" required="">
+                                <input type="email" class="form-control round" id="user-email" placeholder="Gmail của bạn" required="">
                                 <div class="form-control-position">
                                     <i class="ft-mail"></i>
                                 </div>
                             </fieldset>                            
                             <div class="form-group text-center">
-                                    <button type="submit" class="btn round btn-block btn-glow btn-bg-gradient-x-purple-blue col-12 mr-1 mb-1">Submit</button>
+                                    <button type="submit" class="btn round btn-block btn-glow btn-bg-gradient-x-purple-blue col-12 mr-1 mb-1">Xác Nhận</button>
                                 </div>
                         </form>
                     </div>
                 </div>
                 <div class="card-footer border-0 p-0">
-                    <p class="float-sm-center text-center">Not a member ?
-                        <a href="register.html" class="card-link">Sign Up</a>
+                    <p class="float-sm-center text-center">Không phải là thành viên ?
+                        <a href="register.html" class="card-link">Đăng nhập</a>
                     </p>
                 </div>
             </div>
