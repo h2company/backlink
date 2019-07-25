@@ -60,7 +60,7 @@
                             <img src="app-assets\images\logo\logo.png" alt="branding logo">
                     </div>
                     <div class="font-large-1  text-center">                       
-                        Member Login
+                        Đăng Nhập
                     </div>
                 </div>
                 <div class="card-content">
