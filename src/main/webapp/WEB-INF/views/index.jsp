@@ -1,5 +1,6 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<base href="${pageContext.servletContext.contextPath}/">
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
   <!-- BEGIN: Head-->
