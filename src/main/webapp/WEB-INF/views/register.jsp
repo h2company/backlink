@@ -60,7 +60,7 @@
                         <img src="app-assets\images\logo\logo.png" alt="branding logo">
                     </div>
                     <div class="font-large-1  text-center">
-                        Become A Member
+                       Đăng Ký
                     </div>
                 </div>
                 <div class="card-content">
@@ -68,32 +68,32 @@
                     <div class="card-body">
                         <form class="form-horizontal" action="index.html" novalidate="">
                             <fieldset class="form-group position-relative has-icon-left">
-                                <input type="text" class="form-control round" id="user-name" placeholder="Choose Username" required="">
+                                <input type="text" class="form-control round" id="user-name" placeholder="Tên" required="">
                                 <div class="form-control-position">
                                     <i class="ft-user"></i>
                                 </div>
                             </fieldset>
                             <fieldset class="form-group position-relative has-icon-left">
-                                <input type="email" class="form-control round" id="user-email" placeholder="Your Email Address" required="">
+                                <input type="email" class="form-control round" id="user-email" placeholder="Email của bạn" required="">
                                 <div class="form-control-position">
                                     <i class="ft-mail"></i>
                                 </div>
                             </fieldset>
                             <fieldset class="form-group position-relative has-icon-left">
-                                <input type="password" class="form-control round" id="user-password" placeholder="Enter Password" required="">
+                                <input type="password" class="form-control round" id="user-password" placeholder="Nhập mật khẩu" required="">
                                 <div class="form-control-position">
                                     <i class="ft-lock"></i>
                                 </div>
                             </fieldset>
 
                             <div class="form-group text-center">
-                                <button type="submit" class="btn round btn-block btn-glow btn-bg-gradient-x-purple-blue col-12 mr-1 mb-1">Register</button>
+                                <button type="submit" class="btn round btn-block btn-glow btn-bg-gradient-x-purple-blue col-12 mr-1 mb-1">Đăng ký</button>
                             </div>
 
                         </form>
                     </div>
                     <p class="card-subtitle line-on-side text-muted text-center font-small-3 mx-2 my-2 ">
-                        <span>OR Sign Up Using</span>
+                        <span>Hoặc Đăng Nhập Bằng</span>
                     </p>
                     <div class="text-center">
                         <a href="#" class="btn btn-social-icon round mr-1 mb-1 btn-facebook">
@@ -108,8 +108,8 @@
                     </div>
 
                     <p class="card-subtitle text-muted text-right font-small-3 mx-2 my-1">
-                        <span>Already a member ?
-                            <a href="login.html" class="card-link">Sign In</a>
+                        <span>Bạn đã là thành viên
+                            <a href="login.html" class="card-link">Đăng nhập</a>
                         </span>
                     </p>
                 </div>
