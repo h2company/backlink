@@ -60,7 +60,7 @@
                         <img src="app-assets\images\logo\logo.png" alt="branding logo">
                     </div>
                     <div class="font-large-1  text-center">
-                       Đăng Ký
+                       Đăng Ký Thành Viên
                     </div>
                 </div>
                 <div class="card-content">
