@@ -9,5 +9,5 @@ import com.backlink.entities.Account;
 @Repository
 @Qualifier("accountRepository")
 public interface AccountRepository extends JpaRepository<Account, String>{
-
+	
 }

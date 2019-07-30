@@ -9,37 +9,36 @@ import com.backlink.DTO.AccountRepository;
 import com.backlink.entities.Account;
 
 @Service
-public class AccountService implements ServiceObject<Account>{
-	
+public class AccountService implements ServiceObject<Account, String>{
+
 	@Autowired
 	private AccountRepository accountRepository;
 	
 	@Override
-	public List<Account> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Account> findAll() {		
+		return accountRepository.findAll();
 	}
 
 	@Override
 	public Account findById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return accountRepository.getOne(id);
 	}
 
 	@Override
-	public Account save(Account account) {
-		return accountRepository.save(account);
+	public Account save(Account t) {		
+		return accountRepository.save(t);
 	}
 
 	@Override
-	public Account update(Account account) {		
-		return accountRepository.save(account);
+	public Account update(Account t) {
+		return accountRepository.saveAndFlush(t);
 	}
 
 	@Override
-	public boolean delete(Account t) {
-		// TODO Auto-generated method stub
-		return false;
+	public void delete(String id) {		
+		accountRepository.deleteById(id);
 	}
+	
+	
 	
 }
