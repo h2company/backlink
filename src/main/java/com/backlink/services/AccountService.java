@@ -25,13 +25,13 @@ public class AccountService implements ServiceObject<Account, String>{
 	}
 
 	@Override
-	public Account save(Account t) {		
-		return accountRepository.save(t);
+	public Account save(Account account) {		
+		return accountRepository.save(account);
 	}
 
 	@Override
-	public Account update(Account t) {
-		return accountRepository.saveAndFlush(t);
+	public Account update(Account account) {
+		return accountRepository.saveAndFlush(account);
 	}
 
 	@Override
