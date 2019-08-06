@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface ServiceObject<T, V> {
-	<T> List<T> findAll();
+	 List<T> findAll();
 
 	T findById(V id);
 
