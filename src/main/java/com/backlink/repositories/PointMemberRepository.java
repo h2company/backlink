@@ -1,13 +1,13 @@
-package com.backlink.repositories;
+package com.backlink.DTO;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.backlink.entities.Account;
+import com.backlink.entities.PointMember;
 
 @Repository
-@Qualifier("accountRepository")
-public interface AccountRepository extends JpaRepository<Account, String>{
+@Qualifier("pointMemberRepository")
+public interface PointMemberRepository extends JpaRepository<PointMember, Integer> {
 	
 }

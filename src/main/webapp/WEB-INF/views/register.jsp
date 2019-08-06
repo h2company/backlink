@@ -1,17 +1,18 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<base href="${pageContext.servletContext.contextPath}/">
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
   <!-- BEGIN: Head-->
   <head>
+  
+	<base href="${pageContext.servletContext.contextPath}/">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta name="description" content="Chameleon Admin is a modern Bootstrap 4 webapp &amp; admin dashboard html template with a large number of components, elegant design, clean and organized code.">
     <meta name="keywords" content="admin template, Chameleon admin template, dashboard template, gradient admin template, responsive admin template, webapp, eCommerce dashboard, analytic dashboard">
     <meta name="author" content="ThemeSelect">
-    <title>Register with Background Color - Chameleon Admin - Modern Bootstrap 4 WebApp & Dashboard HTML Template + UI Kit</title>
+    <title>Đăng Kí Tài Khoản</title>
     <link rel="apple-touch-icon" href="app-assets\images\ico\apple-icon-120.png">
     <link rel="shortcut icon" type="image/x-icon" href="app-assets\images\ico\favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
@@ -55,7 +56,7 @@
     <div class="col-12 d-flex align-items-center justify-content-center">
         <div class="col-lg-4 col-md-6 col-10 box-shadow-2 p-0">
             <div class="card border-grey border-lighten-3 px-1 py-1 m-0">
-                <div class="card-header border-0">
+                <div class="card-header border-0 mtb-5">
                     <div class="text-center mb-1">
                         <img src="app-assets\images\logo\logo.png" alt="branding logo">
                     </div>
@@ -64,23 +65,40 @@
                     </div>
                 </div>
                 <div class="card-content">
-
-                    <div class="card-body">
-                        <form class="form-horizontal" action="index.html" novalidate="">
+                    <div class="card-body mtb-5">
+                        <form class="form-horizontal" action="" method="POST" novalidate="">
                             <fieldset class="form-group position-relative has-icon-left">
-                                <input type="text" class="form-control round" id="user-name" placeholder="Tên" required="">
+                                <input type="text" class="form-control round" id="user-name" name="fullname" placeholder="Họ và tên" required="">
                                 <div class="form-control-position">
                                     <i class="ft-user"></i>
                                 </div>
                             </fieldset>
                             <fieldset class="form-group position-relative has-icon-left">
-                                <input type="email" class="form-control round" id="user-email" placeholder="Email của bạn" required="">
+                                <input type="email" class="form-control round" name="email" id="user-email" placeholder="Địa chỉ email" required="">
                                 <div class="form-control-position">
                                     <i class="ft-mail"></i>
                                 </div>
                             </fieldset>
                             <fieldset class="form-group position-relative has-icon-left">
-                                <input type="password" class="form-control round" id="user-password" placeholder="Nhập mật khẩu" required="">
+                                <input type="email" class="form-control round" name="phone" id="user-phone" placeholder="Số điện thoại" required="">
+                                <div class="form-control-position">
+                                    <i class="ft-phone"></i>
+                                </div>
+                            </fieldset>
+                            <fieldset class="form-group position-relative has-icon-left">
+                                <input type="email" class="form-control round" name="username" id="user-account" placeholder="Tài khoản" required="">
+                                <div class="form-control-position">
+                                    <i class="ft-user"></i>
+                                </div>
+                            </fieldset>
+                            <fieldset class="form-group position-relative has-icon-left">
+                                <input type="password" class="form-control round" name="password" id="user-password" placeholder="Nhập mật khẩu" required="">
+                                <div class="form-control-position">
+                                    <i class="ft-lock"></i>
+                                </div>
+                            </fieldset>
+                            <fieldset class="form-group position-relative has-icon-left">
+                                <input type="password" class="form-control round" name="repassword" id="user-repassword" placeholder="Nhập lại mật khẩu" required="">
                                 <div class="form-control-position">
                                     <i class="ft-lock"></i>
                                 </div>
@@ -92,7 +110,7 @@
 
                         </form>
                     </div>
-                    <p class="card-subtitle line-on-side text-muted text-center font-small-3 mx-2 my-2 ">
+                    <%--<p class="card-subtitle line-on-side text-muted text-center font-small-3 mx-2 my-2 ">
                         <span>Hoặc Đăng Nhập Bằng</span>
                     </p>
                     <div class="text-center">
@@ -105,7 +123,7 @@
                         <a href="#" class="btn btn-social-icon round mr-1 mb-1 btn-instagram">
                             <span class="ft-instagram"></span>
                         </a>
-                    </div>
+                    </div> --%>
 
                     <p class="card-subtitle text-muted text-right font-small-3 mx-2 my-1">
                         <span>Bạn đã là thành viên

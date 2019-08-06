@@ -5,15 +5,16 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 @Service
-public interface ServiceObject<T, V> {
-	 List<T> findAll();
+public interface ServiceObject<T, ID> {
 
-	T findById(V id);
+	List<T> findAll();
+
+	T findById(ID id);
 
 	T save(T t);
 
 	T update(T t);
 
-	void delete(V t);
+	void delete(ID id);
 
 }
