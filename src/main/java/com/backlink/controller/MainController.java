@@ -1,7 +1,5 @@
 package com.backlink.controller;
 
-import java.util.Date;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,14 +11,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.backlink.entities.Account;
-import com.backlink.entities.AccountInfo;
 import com.backlink.services.AccountInfoService;
 import com.backlink.services.AccountService;
 import com.backlink.util.Response;
 
 @Controller
-public class IndexController {
+public class MainController {
 
 	@Autowired
 	private AccountService accountService;
@@ -29,7 +25,8 @@ public class IndexController {
 	private AccountInfoService accountInfoService;
 
 	@GetMapping(value = { "", "index" })
-	public String viewIndex() {
+	public String viewIndex(ModelMap md) {
+		md.addAttribute("active", "index");
 		return "index";
 	}
 
