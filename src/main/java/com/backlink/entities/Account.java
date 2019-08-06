@@ -2,12 +2,16 @@ package com.backlink.entities;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.backlink.helper.StringHelper;
+import com.backlink.util.Encrypt;
 
 @Entity
 @Table(name = "account")
@@ -20,12 +24,6 @@ public class Account extends AbstractModel {
 	@Column(name = "password")
 	private String password;
 
-	@Column(name = "md5")
-	private String md5;
-
-	@Column(name = "hash")
-	private String hash;
-
 	@Column(name = "role")
 	private int role;
 
@@ -35,6 +33,10 @@ public class Account extends AbstractModel {
 	@Column(name = "phone")
 	private String phone;
 
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "username")
+	private AccountInfo accountInfo;
+
 	public Account() {
 
 	}
@@ -42,14 +44,22 @@ public class Account extends AbstractModel {
 	public Account(String username, String password, int role, String email, String phone) {
 		super();
 		this.username = username;
-		this.password = password;
+		this.password = Encrypt.password(password);
 		this.role = role;
 		this.email = email;
 		this.phone = phone;
-		this.hash = StringHelper.randomAlphaNumeric(8);
-		this.md5 = "123";
 		this.createAt = new Date();
 		this.updateAt = new Date();
+	}
+
+	public Account(String username, String password, int role, String email, String phone, AccountInfo accountInfo) {
+		super();
+		this.username = username;
+		this.password = Encrypt.password(password);
+		this.role = role;
+		this.email = email;
+		this.phone = phone;
+		this.accountInfo = accountInfo;
 	}
 
 	public String getUsername() {
@@ -65,23 +75,7 @@ public class Account extends AbstractModel {
 	}
 
 	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getMd5() {
-		return md5;
-	}
-
-	public void setMd5(String md5) {
-		this.md5 = md5;
-	}
-
-	public String getHash() {
-		return hash;
-	}
-
-	public void setHash(String hash) {
-		this.hash = hash;
+		this.password = Encrypt.password(password);
 	}
 
 	public int getRole() {
@@ -106,6 +100,14 @@ public class Account extends AbstractModel {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	public AccountInfo getAccountInfo() {
+		return accountInfo;
+	}
+
+	public void setAccountInfo(AccountInfo accountInfo) {
+		this.accountInfo = accountInfo;
 	}
 
 }
