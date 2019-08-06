@@ -2,8 +2,10 @@ package com.backlink.entities;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -39,6 +41,9 @@ public class AccountInfo extends AbstractModel{
 	
 	@Column(name = "gender")
 	private boolean gender;
+	
+	@OneToOne(mappedBy = "accountInfo")
+    private Account account;
 	
 	public AccountInfo(){
 		
@@ -99,6 +104,14 @@ public class AccountInfo extends AbstractModel{
 
 	public void setGender(boolean gender) {
 		this.gender = gender;
+	}
+
+	public Account getAccount() {
+		return account;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
 	}
 	
 	

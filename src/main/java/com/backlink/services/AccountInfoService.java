@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.backlink.DTO.AccountInfoRepository;
 import com.backlink.entities.AccountInfo;
+import com.backlink.repositories.AccountInfoRepository;
 
 @Service
 public class AccountInfoService implements ServiceObject<AccountInfo, Integer> {
