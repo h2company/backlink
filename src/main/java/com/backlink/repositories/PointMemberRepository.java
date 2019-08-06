@@ -1,4 +1,4 @@
-package com.backlink.DTO;
+package com.backlink.repositories;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,5 +9,5 @@ import com.backlink.entities.PointMember;
 @Repository
 @Qualifier("pointMemberRepository")
 public interface PointMemberRepository extends JpaRepository<PointMember, Integer> {
-	
+
 }

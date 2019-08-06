@@ -5,16 +5,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.backlink.DTO.PointMemberRepository;
 import com.backlink.entities.PointMember;
+import com.backlink.repositories.PointMemberRepository;
 
 @Service
 public class PointMemberService implements ServiceObject<PointMember, Integer> {
-	
+
 	@Autowired
 	private PointMemberRepository pointMemberRepository;
-	
-	
+
 	@Override
 	public List<PointMember> findAll() {
 		return pointMemberRepository.findAll();
@@ -22,8 +21,10 @@ public class PointMemberService implements ServiceObject<PointMember, Integer> {
 
 	@Override
 	public PointMember findById(Integer id) {
-	
-		return pointMemberRepository.getOne(id);
+		if (pointMemberRepository.existsById(id)) {
+			return pointMemberRepository.getOne(id);
+		}
+		return null;
 	}
 
 	@Override
@@ -40,7 +41,5 @@ public class PointMemberService implements ServiceObject<PointMember, Integer> {
 	public void delete(Integer id) {
 		pointMemberRepository.deleteById(id);
 	}
-
-	
 
 }
