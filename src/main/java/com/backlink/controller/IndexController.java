@@ -58,14 +58,9 @@ public class IndexController {
 	@PostMapping(value = "/register", produces = "application/json; charset=utf-8")
 	public @ResponseBody String actionRegistrator(HttpSession session, @RequestParam("username") String username,
 			@RequestParam("fullname") String fullname, @RequestParam("password") String password,
-			@RequestParam("email") String email, @RequestParam("phone") String phone,
-			@RequestParam("gender") boolean gender, @RequestParam("address") String address,
-			@RequestParam("birthday") Date birthday) {
+			@RequestParam("repassword") String repassword,@RequestParam("email") String email, 
+			@RequestParam("phone") String phone) {
 		String result = "Thêm " + username + " thất bại";
-		if (accountService.save(new Account(username, password, 1, email, phone,
-				new AccountInfo(username, fullname, address, birthday, gender))) != null) {
-			result = "Thêm " + username + " thành công";
-		}
 		return result;
 	}
 
