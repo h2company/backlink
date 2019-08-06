@@ -2,14 +2,16 @@ package com.backlink.entities;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.mindrot.jbcrypt.BCrypt;
-
-import com.backlink.helper.StringHelper;
+import com.backlink.util.Encrypt;
 
 @Entity
 @Table(name = "account")
@@ -31,6 +33,10 @@ public class Account extends AbstractModel {
 	@Column(name = "phone")
 	private String phone;
 
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "username")
+	private AccountInfo accountInfo;
+
 	public Account() {
 
 	}
@@ -38,12 +44,22 @@ public class Account extends AbstractModel {
 	public Account(String username, String password, int role, String email, String phone) {
 		super();
 		this.username = username;
-		this.password = BCrypt.hashpw(password, BCrypt.gensalt(10));
+		this.password = Encrypt.password(password);
 		this.role = role;
 		this.email = email;
 		this.phone = phone;
 		this.createAt = new Date();
 		this.updateAt = new Date();
+	}
+
+	public Account(String username, String password, int role, String email, String phone, AccountInfo accountInfo) {
+		super();
+		this.username = username;
+		this.password = Encrypt.password(password);
+		this.role = role;
+		this.email = email;
+		this.phone = phone;
+		this.accountInfo = accountInfo;
 	}
 
 	public String getUsername() {
@@ -59,7 +75,7 @@ public class Account extends AbstractModel {
 	}
 
 	public void setPassword(String password) {
-		this.password = password;
+		this.password = Encrypt.password(password);
 	}
 
 	public int getRole() {
@@ -84,6 +100,14 @@ public class Account extends AbstractModel {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	public AccountInfo getAccountInfo() {
+		return accountInfo;
+	}
+
+	public void setAccountInfo(AccountInfo accountInfo) {
+		this.accountInfo = accountInfo;
 	}
 
 }
