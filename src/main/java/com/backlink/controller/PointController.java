@@ -10,11 +10,11 @@ public class PointController {
 	@GetMapping(value = "point/member")
 	public String pointMember(ModelMap md) {
 		md.addAttribute("active", "pointMember");
-		return "pointMember";
+		return "point-member";
 	}
 	@GetMapping(value = "point/log")
 	public String pointLog(ModelMap md) {
 		md.addAttribute("active", "pointLog");
-		return "pointLog";
+		return "point-log";
 	}
 }
