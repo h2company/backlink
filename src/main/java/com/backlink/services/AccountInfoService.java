@@ -25,13 +25,13 @@ public class AccountInfoService implements ServiceObject<AccountInfo, Integer> {
 	}
 
 	@Override
-	public AccountInfo save(AccountInfo t) {
-		return accountInfoRepository.save(t);
+	public AccountInfo save(AccountInfo accountInfo) {
+		return accountInfoRepository.save(accountInfo);
 	}
 
 	@Override
-	public AccountInfo update(AccountInfo t) {
-		return accountInfoRepository.saveAndFlush(t);
+	public AccountInfo update(AccountInfo accountInfo) {
+		return accountInfoRepository.saveAndFlush(accountInfo);
 	}
 
 	@Override
