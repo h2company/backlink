@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.backlink.DTO.RecoveryPasswordRepository;
 import com.backlink.entities.RecoveryPassword;
+import com.backlink.repositories.RecoveryPasswordRepository;
 
 @Service
 public class RecoveryPasswordService implements ServiceObject<RecoveryPassword, Integer> {
