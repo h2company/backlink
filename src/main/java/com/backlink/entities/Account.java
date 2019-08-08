@@ -1,5 +1,6 @@
 package com.backlink.entities;
 
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -8,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -36,6 +38,9 @@ public class Account extends AbstractModel {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "username")
 	private AccountInfo accountInfo;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "account")
+	private Collection<RecoveryPassword> allRecoveryPassword;
 
 	public Account() {
 
