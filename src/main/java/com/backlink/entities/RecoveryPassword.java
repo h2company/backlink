@@ -5,12 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "recoverpassword")
 public class RecoveryPassword extends AbstractModel {
-	
+
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,23 +23,19 @@ public class RecoveryPassword extends AbstractModel {
 
 	@Column(name = "password")
 	private String password;
-
-	@Column(name = "createAt")
-	private String createAt;
-
-	@Column(name = "updateAt")
-	private String updateAt;
+	
+	@ManyToOne
+	@JoinColumn(name = "username")
+	private Account account;
 
 	public RecoveryPassword() {
-		
+
 	}
 
-	public RecoveryPassword(String username, String password, String createAt, String updateAt) {
+	public RecoveryPassword(String username, String password) {
 		super();
 		this.username = username;
 		this.password = password;
-		this.createAt = createAt;
-		this.updateAt = updateAt;
 	}
 
 	public int getId() {
@@ -63,5 +61,5 @@ public class RecoveryPassword extends AbstractModel {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 }
