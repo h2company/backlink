@@ -9,6 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -28,10 +31,14 @@ public class PointMember extends AbstractModel {
 	
 	@Column(name="point")
 	private int point;
-	
+
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pointmember")
 	private Collection<PointLog> allPointLog;
-	
+
+	@ManyToOne
+	@JoinColumn(name = "username")
+  private Account account;
+
 	public PointMember() {}
 
 	public PointMember(String username, int idlog, int point) {
@@ -79,6 +86,14 @@ public class PointMember extends AbstractModel {
 
 	public void setPoint(int point) {
 		this.point = point;
+	}
+
+	public Account getAccount() {
+		return account;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
 	}
 	
 	

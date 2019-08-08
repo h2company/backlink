@@ -39,9 +39,16 @@ public class Account extends AbstractModel {
 	@JoinColumn(name = "username")
 	private AccountInfo accountInfo;
 	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "username")
+	private PointMember pointMember;
+	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "account")
 	private Collection<RecoveryPassword> allRecoveryPassword;
 
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "account")
+	private Collection<PointMember> allPointMember;
+	
 	public Account() {
 
 	}
@@ -113,6 +120,30 @@ public class Account extends AbstractModel {
 
 	public void setAccountInfo(AccountInfo accountInfo) {
 		this.accountInfo = accountInfo;
+	}
+
+	public PointMember getPointMember() {
+		return pointMember;
+	}
+
+	public void setPointMember(PointMember pointMember) {
+		this.pointMember = pointMember;
+	}
+
+	public Collection<RecoveryPassword> getAllRecoveryPassword() {
+		return allRecoveryPassword;
+	}
+
+	public void setAllRecoveryPassword(Collection<RecoveryPassword> allRecoveryPassword) {
+		this.allRecoveryPassword = allRecoveryPassword;
+	}
+
+	public Collection<PointMember> getAllPointMember() {
+		return allPointMember;
+	}
+
+	public void setAllPointMember(Collection<PointMember> allPointMember) {
+		this.allPointMember = allPointMember;
 	}
 
 }
