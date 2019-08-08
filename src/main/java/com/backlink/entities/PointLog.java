@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,6 +19,10 @@ public class PointLog extends AbstractModel {
 
 	@Column(name = "des")
 	private String des;
+	
+	@ManyToOne
+	@JoinColumn(name = "idMember")
+	private PointMember pointmember;
 
 	public PointLog() {
 		super();
@@ -25,6 +31,14 @@ public class PointLog extends AbstractModel {
 	public PointLog(String des) {
 		super();
 		this.des = des;
+	}
+
+	public PointMember getPointmember() {
+		return pointmember;
+	}
+
+	public void setPointmember(PointMember pointmember) {
+		this.pointmember = pointmember;
 	}
 
 	public int getId() {
