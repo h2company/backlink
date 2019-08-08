@@ -1,11 +1,14 @@
 package com.backlink.entities;
 
+import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -28,11 +31,14 @@ public class PointMember extends AbstractModel {
 	
 	@Column(name="point")
 	private int point;
-	
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pointmember")
+	private Collection<PointLog> allPointLog;
+
 	@ManyToOne
 	@JoinColumn(name = "username")
-    private Account account;
-	
+  private Account account;
+
 	public PointMember() {}
 
 	public PointMember(String username, int idlog, int point) {
@@ -40,6 +46,14 @@ public class PointMember extends AbstractModel {
 		this.username = username;
 		this.idlog = idlog;
 		this.point = point;
+	}
+
+	public Collection<PointLog> getAllPointLog() {
+		return allPointLog;
+	}
+
+	public void setAllPointLog(Collection<PointLog> allPointLog) {
+		this.allPointLog = allPointLog;
 	}
 
 	public int getId() {
