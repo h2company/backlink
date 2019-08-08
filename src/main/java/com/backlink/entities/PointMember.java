@@ -2,9 +2,13 @@ package com.backlink.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,6 +28,10 @@ public class PointMember extends AbstractModel {
 	
 	@Column(name="point")
 	private int point;
+	
+	@ManyToOne
+	@JoinColumn(name = "username")
+    private Account account;
 	
 	public PointMember() {}
 
@@ -64,6 +72,14 @@ public class PointMember extends AbstractModel {
 
 	public void setPoint(int point) {
 		this.point = point;
+	}
+
+	public Account getAccount() {
+		return account;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
 	}
 	
 	
