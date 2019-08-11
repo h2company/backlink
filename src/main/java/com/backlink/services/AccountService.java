@@ -29,7 +29,7 @@ public class AccountService implements AbstractMessage, ServiceObject<Account, S
 
 	@Override
 	public Account findById(String id) {
-		if(accountRepository.existsById(id)) {
+		if (accountRepository.existsById(id)) {
 			return accountRepository.getOne(id);
 		}
 		return null;
@@ -38,6 +38,31 @@ public class AccountService implements AbstractMessage, ServiceObject<Account, S
 	@Override
 	public Account save(Account account) {
 		return accountRepository.save(account);
+	}
+
+	public Response save(Account account, String repassword) {
+		if (!Helper.notNull(account.getUsername(), account.getPassword(), account.getEmail(), account.getPhone(),account.getAccountInfo().getFullname(), repassword)) {
+			return responseService.createResponseObject(STATUS_ERROR, MESSAGE_REQUIRE_INPUT);
+		}
+		if(!Helper.validateEmail(account.getEmail())) {
+			return responseService.createResponseObject(STATUS_ERROR, MESSAGE_EMAIL_INVALID);
+		}
+		if(!Helper.validatePhone(account.getPhone())) {
+			return responseService.createResponseObject(STATUS_ERROR, MESSAGE_PHONE_INVALID);
+		}
+		if(this.findById(account.getUsername()) != null) {
+			return responseService.createResponseObject(STATUS_ERROR, MESSAGE_RIGISTER_EXIST);
+		}
+		if(account.getPassword().trim().length() < 8 || repassword.trim().length() < 8) {
+			return responseService.createResponseObject(STATUS_ERROR, MESSAGE_RIGISTER_PASSWORD_MUST_MIN_8_LENGTHS);
+		}
+		if(!Decrypt.verify(repassword, account.getPassword())) {
+			return responseService.createResponseObject(STATUS_ERROR, MESSAGE_RIGISTER_NOT_SAME_PASSWORD);
+		}
+		if(this.save(account) != null) {
+			return responseService.createResponseObject(STATUS_SECCESS, MESSAGE_RIGISTER_SUCCESS);
+		}
+		return responseService.createResponseObject(STATUS_ERROR, SYSTEM_MAINTENANCE);
 	}
 
 	@Override

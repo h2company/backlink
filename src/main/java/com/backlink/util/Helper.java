@@ -3,6 +3,8 @@ package com.backlink.util;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Helper {
 
@@ -29,19 +31,34 @@ public class Helper {
 	public static String parseDateToString(Date date) {
 		return sdf.format(date);
 	}
-	
+
 	public static boolean notNull(String... data) {
 		boolean result = false;
-		if(data != null && data.length > 0) {
+		if (data != null && data.length > 0) {
 			result = !result;
-			for(String field : data) {
-				if(field.equals("")) {
+			for (String field : data) {
+				if (field.equals("")) {
 					result = !result;
 					break;
 				}
 			}
 		}
 		return result;
+	}
+
+	private static final Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$",
+			Pattern.CASE_INSENSITIVE);
+	private static final Pattern VALID_PHONE_REGEX = Pattern.compile("^0\\d{9}$",
+			Pattern.CASE_INSENSITIVE);
+
+	public static boolean validateEmail(String emailStr) {
+		Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
+		return matcher.find();
+	}
+	
+	public static boolean validatePhone(String phoneStr) {
+		Matcher matcher = VALID_PHONE_REGEX.matcher(phoneStr);
+		return matcher.find();
 	}
 
 }
