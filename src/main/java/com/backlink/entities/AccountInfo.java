@@ -18,35 +18,41 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "accountinfo")
-public class AccountInfo extends AbstractModel{
-	
+public class AccountInfo extends AbstractModel {
+
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;	
-	
+	private int id;
+
 	@Column(name = "username")
 	private String username;
-	
+
 	@Column(name = "fullname")
 	private String fullname;
-	
+
 	@Column(name = "address")
 	private String address;
-	
+
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Column(name = "birthday")
 	private Date birthday;
-	
+
 	@Column(name = "gender")
 	private boolean gender;
-	
+
 	@OneToOne(mappedBy = "accountInfo")
-    private Account account;
-	
-	public AccountInfo(){
-		
+	private Account account;
+
+	public AccountInfo() {
+
+	}
+
+	public AccountInfo(String username, String fullname) {
+		super();
+		this.username = username;
+		this.fullname = fullname;
 	}
 
 	public AccountInfo(String username, String fullname, String address, Date birthday, boolean gender) {
@@ -113,7 +119,5 @@ public class AccountInfo extends AbstractModel{
 	public void setAccount(Account account) {
 		this.account = account;
 	}
-	
-	
-	
+
 }
