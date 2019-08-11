@@ -25,7 +25,7 @@ public class RecoveryPassword extends AbstractModel {
 	private String password;
 	
 	@ManyToOne
-	@JoinColumn(name = "username")
+	@JoinColumn(name = "username", referencedColumnName = "username", insertable = false, updatable = false)
 	private Account account;
 
 	public RecoveryPassword() {
