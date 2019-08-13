@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -25,9 +26,6 @@ public class AccountInfo extends AbstractModel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Column(name = "username")
-	private String username;
-
 	@Column(name = "fullname")
 	private String fullname;
 
@@ -42,26 +40,27 @@ public class AccountInfo extends AbstractModel {
 	@Column(name = "gender")
 	private boolean gender;
 
-	@OneToOne(mappedBy = "accountInfo")
+	@OneToOne()
+	@JoinColumn(name = "username")
 	private Account account;
 
 	public AccountInfo() {
 
 	}
 
-	public AccountInfo(String username, String fullname) {
+	public AccountInfo(String fullname, Account account) {
 		super();
-		this.username = username;
 		this.fullname = fullname;
+		this.account = account;
 	}
 
-	public AccountInfo(String username, String fullname, String address, Date birthday, boolean gender) {
+	public AccountInfo(String fullname, String address, Date birthday, boolean gender, Account account) {
 		super();
-		this.username = username;
 		this.fullname = fullname;
 		this.address = address;
 		this.birthday = birthday;
 		this.gender = gender;
+		this.account = account;
 	}
 
 	public int getId() {
@@ -70,14 +69,6 @@ public class AccountInfo extends AbstractModel {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
 	}
 
 	public String getFullname() {

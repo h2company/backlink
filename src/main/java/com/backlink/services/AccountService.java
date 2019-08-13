@@ -18,6 +18,9 @@ public class AccountService implements AbstractMessage, ServiceObject<Account, S
 
 	@Autowired
 	private AccountRepository accountRepository;
+	
+	@Autowired
+	private AccountInfoService accountInfoService;
 
 	@Autowired
 	private ResponseService responseService;
@@ -83,7 +86,8 @@ public class AccountService implements AbstractMessage, ServiceObject<Account, S
 		if (account == null || !Decrypt.verify(password, account.getPassword())) {
 			return responseService.createResponseObject(STATUS_ERROR, MESSAGE_ACCOUNT_NULL);
 		}
-		return responseService.createResponseObject(STATUS_SECCESS, MESSAGE_ACCOUNT_SUCCESS);
+		account.setAccountInfo(accountInfoService.getWithUsername(username));
+		return new Response(STATUS_SECCESS, MESSAGE_ACCOUNT_SUCCESS, account);
 	}
 
 }
