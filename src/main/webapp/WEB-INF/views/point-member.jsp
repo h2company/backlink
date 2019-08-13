@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,7 +61,7 @@
 	<!-- BEGIN: Main Menu-->
 	<jsp:include page="blocks/sidebar.jsp" />
 	<!-- END: Main Menu -->
-	
+
 	<div class="app-content content">
 		<div class="content-wrapper">
 			<div class="content-wrapper-before"></div>
@@ -108,25 +109,28 @@
 												<th>Tên Thành Viên</th>
 												<th>Username</th>
 												<th>Điểm</th>
+												<th>Ngày Tạo</th>
 												<th></th>
 											</tr>
 										</thead>
 										<tbody>
-										<c:forEach var="pointMember" items="${listPointMember}" >
-											<tr>
-												<th scope="row">${pointMember.id}</th>							
-												<td>${pointMember.account.accountInfo.fullname}</td>
-												<td>${pointMember.username}</td>
-												<td>${pointMember.point}</td>
-												<td class="text-center">
-													<button type="button" class="btn btn-outline-info mr-1">
-														<i class="ft-edit"></i>
-													</button>
-													<button type="button" class="btn btn-outline-danger mr-1">
-														<i class="ft-trash-2"></i>
-													</button>
-												</td>
-											</tr>
+											<c:forEach var="pointMember" items="${listPointMember}">
+												<tr>
+													<th scope="row">${pointMember.id}</th>
+													<td>${pointMember.account.accountInfo.fullname}</td>
+													<td>${pointMember.username}</td>
+													<td>${pointMember.point}</td>
+													<td><fmt:formatDate value="${pointMember.createAt}"
+															pattern="HH:mm:ss dd-MM-yyy " /></td>
+													<td class="text-center">
+														<button type="button" class="btn btn-outline-info mr-1">
+															<i class="ft-edit"></i>
+														</button>
+														<button type="button" class="btn btn-outline-danger mr-1">
+															<i class="ft-trash-2"></i>
+														</button>
+													</td>
+												</tr>
 											</c:forEach>
 										</tbody>
 									</table>
@@ -135,13 +139,99 @@
 						</div>
 					</div>
 				</div>
+
+				<!-- edit pointMember -->
+				<div class="row">
+					<div class="col-xl-12">
+						<div class="card">
+							<div class="card-header">
+								<h4 class="card-title" id="horz-layout-basic">Thay Đổi Thông Tin Thành Viên</h4>
+								<a class="heading-elements-toggle"><i
+									class="la la-ellipsis-v font-medium-3"></i></a>
+								<div class="heading-elements">
+									<ul class="list-inline mb-0">
+										<li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+										<li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+										<li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+										<li><a data-action="close"><i class="ft-x"></i></a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="card-content collpase show">
+								<div class="card-body">
+									<div class="card-text">
+									<span style="color:red">*Chú ý:</span>
+										<p>
+											 Mọi thay đổi sẽ ảnh thưởng đến tài khoản của bạn,Xin hãy cẩn trọng.
+										</p>
+									</div>
+									<c:forEach var="pointMember" items="${listPointMember}">
+									<form class="form form-horizontal">
+										<div class="form-body">
+
+											<h4 class="form-section">
+												<i class="ft-clipboard"></i>Thông Tin Cá Nhân
+											</h4>
+											<div class="form-group row">
+												<label class="col-md-3 label-control" for="projectinput5">ID</label>
+												<div class="col-md-9">
+													<input type="text" id="projectinput5" class="form-control" value= "${pointMember.id}"
+														 name="company" readonly="readonly">
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-md-3 label-control" for="projectinput5">Tên Thành Viên</label>
+												<div class="col-md-9">
+													<input type="text" id="projectinput5" class="form-control" value= "${pointMember.account.accountInfo.fullname}"
+														 name="company" readonly="readonly">
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-md-3 label-control" for="projectinput5" >Username</label>
+												<div class="col-md-9">
+													<input type="text" id="projectinput5" class="form-control"
+														 value= "${pointMember.username}" name="company" readonly="readonly">
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-md-3 label-control" for="projectinput5">Điểm</label>
+												<div class="col-md-9">
+													<input type="number" id="projectinput5" class="form-control"
+														 value= "${pointMember.point}" name="company">
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-md-3 label-control" for="projectinput5">Ngày Tạo</label>
+												<div class="col-md-9">
+													<input type="text" id="projectinput5" class="form-control"
+														 value= "<fmt:formatDate value="${pointMember.createAt}" pattern="HH:mm:ss dd-MM-yyy " />" name="company" readonly="readonly">
+												</div>
+											</div>
+											
+										</div>
+										<div class="form-actions right">
+											<button type="button" class="btn btn-danger mr-1">
+												<i class="ft-x"></i> Cancel
+											</button>
+											<button type="submit" class="btn btn-primary">
+												<i class="la la-check-square-o"></i> Save
+											</button>
+										</div>
+										
+									</form>
+									</c:forEach>
+								</div>
+							</div>
+						</div>
+					</div>					
+				</div>
 			</div>
 		</div>
 	</div>
 	<!-- BEGIN: Footer-->
 	<jsp:include page="blocks/footer.jsp" />
 	<!-- END: Footer-->
-	
+
 	<!-- BEGIN: Vendor JS-->
 	<script src="app-assets\vendors\js\vendors.min.js"
 		type="text/javascript"></script>
