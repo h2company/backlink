@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -111,11 +112,12 @@
 											</tr>
 										</thead>
 										<tbody>
+										<c:forEach var="pointMember" items="${listPointMember}" >
 											<tr>
-												<th scope="row">1</th>
-												<td>Mark</td>
-												<td>Otto</td>
-												<td>@mdo</td>
+												<th scope="row">${pointMember.id}</th>							
+												<td>${pointMember.account.accountInfo.fullname}</td>
+												<td>${pointMember.username}</td>
+												<td>${pointMember.point}</td>
 												<td class="text-center">
 													<button type="button" class="btn btn-outline-info mr-1">
 														<i class="ft-edit"></i>
@@ -125,20 +127,7 @@
 													</button>
 												</td>
 											</tr>
-											<tr>
-												<th scope="row">2</th>
-												<td>Mark</td>
-												<td>Otto</td>
-												<td>@TwBootstrap</td>
-												<td class="text-center">
-													<button type="button" class="btn btn-outline-info mr-1">
-														<i class="ft-edit"></i>
-													</button>
-													<button type="button" class="btn btn-outline-danger mr-1">
-														<i class="ft-trash-2"></i>
-													</button>
-												</td>
-											</tr>
+											</c:forEach>
 										</tbody>
 									</table>
 								</div>
