@@ -35,8 +35,7 @@ public class Account extends AbstractModel {
 	@Column(name = "phone")
 	private String phone;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "username")
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "account")
 	private AccountInfo accountInfo;
 	
 	@OneToOne(cascade = CascadeType.ALL)

@@ -3,6 +3,7 @@ package com.backlink.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,9 +37,16 @@ public class MainController {
 	public String viewLogin() {
 		return "login";
 	}
+	
+	@GetMapping(value = "logout")
+	public String viewLogout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/login.html";
+	}
+	
 
 	@PostMapping(value = "login")
-	public String checkLogin(RedirectAttributes red, @RequestParam("username") String username,
+	public String checkLogin(HttpSession session, RedirectAttributes red, @RequestParam("username") String username,
 			@RequestParam("password") String password) {
 		Response response = accountService.authentication(username, password);
 		if (!response.isSuccess()) {
@@ -46,6 +54,7 @@ public class MainController {
 			red.addFlashAttribute("username", username);
 			return "redirect:/login.html";
 		}
+		session.setAttribute("auth", (Account) response.getData());
 		return "redirect:/index.html";
 	}
 
@@ -60,7 +69,7 @@ public class MainController {
 			@RequestParam("password") String password, @RequestParam("repassword") String repassword,
 			@RequestParam("email") String email, @RequestParam("phone") String phone) {
 		Account acc = new Account(username, password, 0, email, phone);
-		acc.setAccountInfo(new AccountInfo(username, fullname));
+		acc.setAccountInfo(new AccountInfo(fullname, acc));
 		Response response = accountService.save(acc, repassword);
 		red.addFlashAttribute("response", response);
 		if (!response.isSuccess()) {
