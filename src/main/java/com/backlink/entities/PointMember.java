@@ -26,9 +26,6 @@ public class PointMember extends AbstractModel {
 	@Column(name = "username")
 	private String username;
 
-	@Column(name = "idlog")
-	private int idlog;
-
 	@Column(name = "point")
 	private int point;
 
@@ -36,16 +33,15 @@ public class PointMember extends AbstractModel {
 	private Collection<PointLog> allPointLog;
 
 	@ManyToOne
-	@JoinColumn(name = "username")
+	@JoinColumn(name = "username", referencedColumnName = "username", insertable = false, updatable = false)
 	private Account account;
 
 	public PointMember() {
 	}
 
-	public PointMember(String username, int idlog, int point) {
+	public PointMember(String username, int point) {
 		super();
 		this.username = username;
-		this.idlog = idlog;
 		this.point = point;
 	}
 
@@ -71,14 +67,6 @@ public class PointMember extends AbstractModel {
 
 	public void setUsername(String username) {
 		this.username = username;
-	}
-
-	public int getIdlog() {
-		return idlog;
-	}
-
-	public void setIdlog(int idlog) {
-		this.idlog = idlog;
 	}
 
 	public int getPoint() {

@@ -91,7 +91,7 @@
 											method="POST" novalidate="">
 											<c:if test="${not empty response}">
 												<div class="alert alert-${response.status} mb-2 text-center" role="alert">
-													<strong>${response.message}.</strong> 
+													<strong>${response.message}</strong> 
 												</div>
 											</c:if>
 											<fieldset class="form-group position-relative has-icon-left">
