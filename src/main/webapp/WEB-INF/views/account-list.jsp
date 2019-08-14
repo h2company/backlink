@@ -83,7 +83,7 @@
 				</div>
 			</div>
 			<div class="content-body">
-				<c:if test="${empty pm}">
+				<c:if test="${empty aci}">
 					<!-- Bordered striped start -->
 					<div class="row">
 						<div class="col-12">
@@ -107,24 +107,29 @@
 											<thead>
 												<tr>
 													<th>#</th>
-													<th>Tên Thành Viên</th>
 													<th>Username</th>
-													<th>Điểm</th>
+													<th>Tên Thành Viên</th>
+													<th>Địa Chỉ</th>
+													<th>Email</th>
+													<th>Số Điện Thoại</th>
 													<th>Ngày Tạo</th>
 													<th></th>
 												</tr>
 											</thead>
 											<tbody>
-												<c:forEach var="pointMember" items="${listPointMember}">
+												<c:set var="count" value="1" />
+												<c:forEach var="accountInfo" items="${listAccountInfo}">
 													<tr>
-														<th scope="row">${pointMember.id}</th>
-														<td>${pointMember.account.accountInfo.fullname}</td>
-														<td>${pointMember.account.username}</td>
-														<td>${pointMember.point}</td>
-														<td><fmt:formatDate value="${pointMember.createAt}"
+														<th scope="row">${count}</th>
+														<td>${accountInfo.account.username}</td>
+														<td>${accountInfo.fullname}</td>
+														<td>${accountInfo.address}</td>
+														<td>${accountInfo.account.email}</td>
+														<td>${accountInfo.account.phone}</td>
+														<td><fmt:formatDate value="${accountInfo.createAt}"
 																pattern="HH:mm:ss dd-MM-yyy " /></td>
 														<td class="text-center"><a
-															href="./point/member.html?id=${pointMember.id }"><button
+															href="./account/manager.html?id=${accountInfo.id }"><button
 																	type="button" class="btn btn-outline-info mr-1">
 																	<i class="ft-edit"></i>
 																</button></a>
@@ -132,6 +137,7 @@
 																<i class="ft-trash-2"></i>
 															</button></td>
 													</tr>
+													<c:set var="count" value="${count + 1 }" />
 												</c:forEach>
 											</tbody>
 										</table>
@@ -141,7 +147,7 @@
 						</div>
 					</div>
 				</c:if>
-				<c:if test="${not empty pm}">
+				<c:if test="${not empty aci}">
 					<!-- edit pointMember -->
 					<div class="row">
 						<div class="col-xl-12">
@@ -162,22 +168,21 @@
 								</div>
 								<div class="card-content collpase show">
 									<div class="card-body">
-										<div class="card-text">
-											<span style="color: red">*Chú ý:</span>
-											<p>Mọi thay đổi sẽ ảnh thưởng đến tài khoản của bạn,Xin
-												hãy cẩn trọng.</p>
+										<div class="card-text">											
+											<p><span style="color: red">*Chú ý:</span> Hãy cẩn trọng khi thay đổi bất kì thông tin nào.</p>
 										</div>
-										<form class="form form-horizontal">
+										<form class="form form-horizontal" action="./account/manager.html" method="POST">
 											<div class="form-body">
 
 												<h4 class="form-section">
 													<i class="ft-clipboard"></i>Thông Tin Cá Nhân
 												</h4>
 												<div class="form-group row">
-													<label class="col-md-3 label-control" for="projectinput5">ID</label>
+													<label class="col-md-3 label-control" for="projectinput5">UserName</label>
 													<div class="col-md-9">
 														<input type="text" id="projectinput5" class="form-control"
-															value="${pm.id}" name="company" readonly="readonly">
+															value="${aci.account.username}" name="company"
+															readonly="readonly">
 													</div>
 												</div>
 												<div class="form-group row">
@@ -185,23 +190,32 @@
 														Thành Viên</label>
 													<div class="col-md-9">
 														<input type="text" id="projectinput5" class="form-control"
-															value="${pm.account.accountInfo.fullname}" name="company"
-															readonly="readonly">
+															value="${aci.account.accountInfo.fullname}"
+															name="company">
 													</div>
 												</div>
 												<div class="form-group row">
-													<label class="col-md-3 label-control" for="projectinput5">Username</label>
+													<label class="col-md-3 label-control" for="projectinput5">Địa
+														Chỉ</label>
 													<div class="col-md-9">
 														<input type="text" id="projectinput5" class="form-control"
-															value="${pm.account.username}" name="company"
-															readonly="readonly">
+															value="${aci.account.accountInfo.address}" name="company">
 													</div>
 												</div>
 												<div class="form-group row">
-													<label class="col-md-3 label-control" for="projectinput5">Điểm</label>
+													<label class="col-md-3 label-control" for="projectinput5">Email</label>
+													<div class="col-md-9">
+														<input type="text" id="projectinput5" class="form-control"
+															value="${aci.account.email}" name="company">
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-md-3 label-control" for="projectinput5">Số
+														Điện Thoại</label>
 													<div class="col-md-9">
 														<input type="number" id="projectinput5"
-															class="form-control" value="${pm.point}" name="company">
+															class="form-control" value="${aci.account.phone}"
+															name="company">
 													</div>
 												</div>
 												<div class="form-group row">
@@ -209,20 +223,20 @@
 														Tạo</label>
 													<div class="col-md-9">
 														<input type="text" id="projectinput5" class="form-control"
-															value="<fmt:formatDate value="${pm.createAt}" pattern="HH:mm:ss dd-MM-yyy " />"
+															value="<fmt:formatDate value="${aci.createAt}" pattern="HH:mm:ss dd-MM-yyy " />"
 															name="company" readonly="readonly">
 													</div>
 												</div>
 
 											</div>
 											<div class="form-actions right">
-												<a href="./point/member.html"><button type="button"
-														class="btn btn-danger mr-1">
-														<i class="ft-x"></i> Cancel
-													</button> </a>
-												<button type="submit" class="btn btn-primary">
-													<i class="la la-check-square-o"></i> Save
+												<button type="submit" class="btn btn-primary mr-1">
+													<i class="la la-check-square-o"></i> Cập nhật
 												</button>
+												<a href="./account/manager.html"><button type="button"
+														class="btn btn-danger" style="min-height: 44px">
+														<i class="ft-x"></i> Trở về
+													</button> </a>
 											</div>
 
 										</form>
