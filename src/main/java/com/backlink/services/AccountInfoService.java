@@ -1,6 +1,7 @@
 package com.backlink.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
@@ -27,8 +28,9 @@ public class AccountInfoService implements ServiceObject<AccountInfo, Integer> {
 
 	@Override
 	public AccountInfo findById(Integer id) {
-		if (accountInfoRepository.existsById(id)) {
-			return accountInfoRepository.getOne(id);
+		Optional<AccountInfo> aci = accountInfoRepository.findById(id);
+		if(aci.isPresent()) {
+			return aci.get();
 		}
 		return null;
 	}
