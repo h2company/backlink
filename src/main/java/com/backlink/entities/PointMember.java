@@ -23,13 +23,10 @@ public class PointMember extends AbstractModel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Column(name = "username")
-	private String username;
-
 	@Column(name = "point")
 	private int point;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pointmember")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pointMember")
 	private Collection<PointLog> allPointLog;
 
 	@ManyToOne
@@ -39,9 +36,8 @@ public class PointMember extends AbstractModel {
 	public PointMember() {
 	}
 
-	public PointMember(String username, int point) {
+	public PointMember(Account account, int point) {
 		super();
-		this.username = username;
 		this.point = point;
 	}
 
@@ -59,14 +55,6 @@ public class PointMember extends AbstractModel {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
 	}
 
 	public int getPoint() {

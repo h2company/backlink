@@ -22,7 +22,7 @@ public class PointLog extends AbstractModel {
 
 	@ManyToOne
 	@JoinColumn(name = "idMember")
-	private PointMember pointmember;
+	private PointMember pointMember;
 
 	public PointLog() {
 		super();
@@ -33,12 +33,12 @@ public class PointLog extends AbstractModel {
 		this.des = des;
 	}
 
-	public PointMember getPointmember() {
-		return pointmember;
+	public PointMember getPointMember() {
+		return pointMember;
 	}
 
-	public void setPointmember(PointMember pointmember) {
-		this.pointmember = pointmember;
+	public void setPointMember(PointMember pointMember) {
+		this.pointMember = pointMember;
 	}
 
 	public int getId() {
