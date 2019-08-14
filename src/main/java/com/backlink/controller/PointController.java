@@ -26,9 +26,11 @@ public class PointController {
 	public String pointMember(ModelMap md, @RequestParam(required = false) String id) {
 		if (id != null) {
 			try {
-				int ID = Integer.parseInt(id);
-				md.addAttribute("pointMember", pointMemberService.findById(ID));
+				Integer idMember = Integer.parseInt(id);
+				PointMember pm = pointMemberService.findById(idMember);
+				md.addAttribute("pm", pm);
 			} catch (Exception e) {
+
 			}
 		}
 		md.addAttribute("active", "pointMember");

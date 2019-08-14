@@ -1,6 +1,7 @@
 package com.backlink.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,8 +22,9 @@ public class PointMemberService implements ServiceObject<PointMember, Integer> {
 
 	@Override
 	public PointMember findById(Integer id) {
-		if (pointMemberRepository.existsById(id)) {
-			return pointMemberRepository.getOne(id);
+		Optional<PointMember> pm = pointMemberRepository.findById(id);
+		if (pm.isPresent()) {			 
+			return pm.get();
 		}
 		return null;
 	}

@@ -8,7 +8,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @MappedSuperclass
-public abstract class AbstractModel {
+public abstract class AbstractModel{
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "createAt")

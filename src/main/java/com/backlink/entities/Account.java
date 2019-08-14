@@ -1,5 +1,6 @@
 package com.backlink.entities;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 
@@ -17,7 +18,9 @@ import com.backlink.util.Encrypt;
 
 @Entity
 @Table(name = "account")
-public class Account extends AbstractModel {
+public class Account extends AbstractModel implements Serializable {
+
+	private static final long serialVersionUID = -6624145887296154475L;
 
 	@Id
 	@Column(name = "username")
@@ -37,17 +40,17 @@ public class Account extends AbstractModel {
 
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "account")
 	private AccountInfo accountInfo;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "username")
 	private PointMember pointMember;
-	
+
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "account")
 	private Collection<RecoveryPassword> allRecoveryPassword;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "account")
 	private Collection<PointMember> allPointMember;
-	
+
 	public Account() {
 
 	}
