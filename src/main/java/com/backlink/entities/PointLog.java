@@ -19,7 +19,7 @@ public class PointLog extends AbstractModel {
 
 	@Column(name = "des")
 	private String des;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "idMember")
 	private PointMember pointmember;
