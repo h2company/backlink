@@ -19,7 +19,14 @@
               <li class="${active.equals("pointLog") ? "active" : ""}"><a class="menu-item" href="point/log.html">Log</a>
               </li>              
             </ul>
-          </li>          
+          </li> 
+          <li class=" nav-item ${active.contains("account") ? "open" : ""}"><a href="#"><i class="ft-users"></i><span class="menu-title" data-i18n="">Quản Lý Tài Khoản</span></a>
+            <ul class="menu-content">
+              <li class="${active.equals("accountManager") ? "active" : ""}"><a class="menu-item" href="account/manager.html">Thành Viên</a>
+              </li>
+              </li>              
+            </ul>
+          </li>           
         </ul>
       </div>
     </div>

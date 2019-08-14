@@ -1,7 +1,10 @@
 package com.backlink.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,7 +14,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "pointlog")
-public class PointLog extends AbstractModel {
+public class PointLog extends AbstractModel  implements Serializable  {
+	
+	private static final long serialVersionUID = 7203079062723829968L;
+
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +26,7 @@ public class PointLog extends AbstractModel {
 	@Column(name = "des")
 	private String des;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idMember")
 	private PointMember pointMember;
 
