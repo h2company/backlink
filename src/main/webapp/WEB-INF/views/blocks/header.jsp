@@ -8,7 +8,7 @@
               <li class="nav-item mobile-menu d-md-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu font-large-1"></i></a></li>
               <li class="nav-item d-none d-md-block"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu"></i></a></li>
               <li class="nav-item d-none d-md-block"><a class="nav-link nav-link-expand" href="#"><i class="ficon ft-maximize"></i></a></li>
-              <li class="dropdown nav-item mega-dropdown d-none d-md-block"><a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">Mega</a>
+              <!-- <li class="dropdown nav-item mega-dropdown d-none d-md-block"><a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">Mega</a>
                 <ul class="mega-dropdown-menu dropdown-menu row">
                   <li class="col-md-2">
                     <h6 class="dropdown-menu-header text-uppercase mb-1"><i class="ft-link"></i> Quick Links</h6>
@@ -96,7 +96,7 @@
                 <div class="dropdown-menu">
                   <div class="arrow_box"><a class="dropdown-item" href="app-assets\email-application.html"><i class="ft-user"></i> Email</a><a class="dropdown-item" href="app-assets\chat-application.html"><i class="ft-mail"></i> Chat</a><a class="dropdown-item" href="app-assets\project-summary.html"><i class="ft-briefcase"></i> Project Summary            </a><a class="dropdown-item" href="app-assets\full-calender.html"><i class="ft-calendar"></i> Calendar            </a></div>
                 </div>
-              </li>
+              </li> -->
               <li class="nav-item dropdown navbar-search"><a class="nav-link dropdown-toggle hide" data-toggle="dropdown" href="#"><i class="ficon ft-search"></i></a>
                 <ul class="dropdown-menu">
                   <li class="arrow_box">
@@ -113,27 +113,27 @@
               </li>
             </ul>
             <ul class="nav navbar-nav float-right">         
-              <li class="dropdown dropdown-language nav-item"><a class="dropdown-toggle nav-link" id="dropdown-flag" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flag-icon flag-icon-us"></i><span class="selected-language"></span></a>
+              <li class="dropdown dropdown-language nav-item"><a class="dropdown-toggle nav-link" id="dropdown-flag" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flag-icon flag-icon-vn"></i><span class="selected-language"></span></a>
                 <div class="dropdown-menu" aria-labelledby="dropdown-flag">
-                  <div class="arrow_box"><a class="dropdown-item" href="#"><i class="flag-icon flag-icon-us"></i> English</a><a class="dropdown-item" href="#"><i class="flag-icon flag-icon-cn"></i> Chinese</a><a class="dropdown-item" href="#"><i class="flag-icon flag-icon-ru"></i> Russian</a><a class="dropdown-item" href="#"><i class="flag-icon flag-icon-fr"></i> French</a><a class="dropdown-item" href="#"><i class="flag-icon flag-icon-es"></i> Spanish</a></div>
+                  <div class="arrow_box"><a class="dropdown-item" href="#"><i class="flag-icon flag-icon-vn"></i> VN</a><a class="dropdown-item" href="#"><i class="flag-icon flag-icon-cn"></i> Chinese</a><a class="dropdown-item" href="#"><i class="flag-icon flag-icon-ru"></i> Russian</a><a class="dropdown-item" href="#"><i class="flag-icon flag-icon-fr"></i> French</a><a class="dropdown-item" href="#"><i class="flag-icon flag-icon-es"></i> Spanish</a></div>
                 </div>
               </li>
-              <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon ft-bell bell-shake" id="notification-navbar-link"></i><span class="badge badge-pill badge-sm badge-danger badge-up badge-glow">5</span></a>
+              <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon ft-bell bell-shake" id="notification-navbar-link"></i><span class="badge badge-pill badge-sm badge-danger badge-up badge-glow">1</span></a>
                 <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
                   <div class="arrow_box_right">
                     <li class="dropdown-menu-header">
-                      <h6 class="dropdown-header m-0"><span class="grey darken-2">Notifications</span></h6>
+                      <h6 class="dropdown-header m-0"><span class="grey darken-2">Thông báo</span></h6>
                     </li>
                     <li class="scrollable-container media-list w-100"><a href="app-assets\javascript:void(0)">
                         <div class="media">
                           <div class="media-left align-self-center"><i class="ft-share info font-medium-4 mt-2"></i></div>
                           <div class="media-body">
-                            <h6 class="media-heading info">New Order Received</h6>
-                            <p class="notification-text font-small-3 text-muted text-bold-600">Lorem ipsum dolor sit amet!</p><small>
+                            <h6 class="media-heading info">Wellcome To BackLink</h6>
+                            <p class="notification-text font-small-3 text-muted text-bold-600">Chào mừng bạn đến với dịch vụ của chúng tôi!</p><small>
                               <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">3:30 PM</time></small>
                           </div>
                         </div></a><a href="app-assets\javascript:void(0)">
-                        <div class="media">
+                        <!-- <div class="media">
                           <div class="media-left align-self-center"><i class="ft-save font-medium-4 mt-2 warning"></i></div>
                           <div class="media-body">
                             <h6 class="media-heading warning">New User Registered</h6>
@@ -162,7 +162,7 @@
                             <h6 class="media-heading info">New Sale</h6><small>
                               <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">Last month</time></small>
                           </div>
-                        </div></a></li>
+                        </div></a> --></li>
                     <li class="dropdown-menu-footer"><a class="dropdown-item info text-right pr-1" href="app-assets\javascript:void(0)">Read all</a></li>
                   </div>
                 </ul>
@@ -177,12 +177,12 @@
                         <div class="media">
                           <div class="media-left"><span class="avatar avatar-sm rounded-circle"><img src="app-assets\images\portrait\small\avatar-s-6.png" alt="avatar"></span></div>
                           <div class="media-body">
-                            <h6 class="media-heading text-bold-700">Sarah Montery<i class="ft-circle font-small-2 success float-right"></i></h6>
-                            <p class="notification-text font-small-3 text-muted text-bold-600">Everything looks good. I will provide...</p><small>
+                            <h6 class="media-heading text-bold-700">Admin<i class="ft-circle font-small-2 success float-right"></i></h6>
+                            <p class="notification-text font-small-3 text-muted text-bold-600">Chào mừng bạn đến với BackLink...</p><small>
                               <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">3:55 PM</time></small>
                           </div>
                         </div></a><a href="app-assets\javascript:void(0)">
-                        <div class="media">
+                       <!-- <div class="media">
                           <div class="media-left"><span class="avatar avatar-sm rounded-circle"><span class="media-object rounded-circle text-circle bg-warning">E</span></span></div>
                           <div class="media-body">
                             <h6 class="media-heading text-bold-700">Eliza Elliot<i class="ft-circle font-small-2 danger float-right"></i></h6>
@@ -205,7 +205,7 @@
                             <p class="notification-text font-small-3 text-muted text-bold-600">We will start new project development...</p><small>
                               <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">Friday</time></small>
                           </div>
-                        </div></a></li>
+                        </div></a>--></li>
                     <li class="dropdown-menu-footer"><a class="dropdown-item text-right info pr-1" href="app-assets\javascript:void(0)">Read all</a></li>
                   </div>
                 </ul>
