@@ -128,7 +128,7 @@
 																	type="button" class="btn btn-outline-info mr-1">
 																	<i class="ft-edit"></i>
 																</button></a>
-															<button type="button" class="btn btn-outline-danger mr-1">
+															<button class="btn btn-outline-danger mr-1">
 																<i class="ft-trash-2"></i>
 															</button></td>
 													</tr>
@@ -163,13 +163,17 @@
 								<div class="card-content collpase show">
 									<div class="card-body">
 										<div class="card-text">
-											<span style="color: red">*Chú ý:</span>
-											<p>Mọi thay đổi sẽ ảnh thưởng đến tài khoản của bạn,Xin
-												hãy cẩn trọng.</p>
+											<p><span style="color: red">*Chú ý:</span> Hãy cẩn trọng khi thay đổi bất kì thông tin nào.</p>
 										</div>
-										<form class="form form-horizontal">
+										<form class="form form-horizontal"
+											action="./point/member.html" method="POST">
+											<c:if test="${not empty response}">
+												<div class="alert alert-${response.status} mb-2 text-center"
+													role="alert">
+													<strong>${response.message}</strong>
+												</div>
+											</c:if>
 											<div class="form-body">
-
 												<h4 class="form-section">
 													<i class="ft-clipboard"></i>Thông Tin Cá Nhân
 												</h4>
@@ -177,7 +181,7 @@
 													<label class="col-md-3 label-control" for="projectinput5">ID</label>
 													<div class="col-md-9">
 														<input type="text" id="projectinput5" class="form-control"
-															value="${pm.id}" name="company" readonly="readonly">
+															value="${pm.id}" name="id" readonly="readonly">
 													</div>
 												</div>
 												<div class="form-group row">
@@ -185,23 +189,22 @@
 														Thành Viên</label>
 													<div class="col-md-9">
 														<input type="text" id="projectinput5" class="form-control"
-															value="${pm.account.accountInfo.fullname}" name="company"
-															readonly="readonly">
+															value="${pm.account.accountInfo.fullname}"
+															name="fullname" disabled>
 													</div>
 												</div>
 												<div class="form-group row">
 													<label class="col-md-3 label-control" for="projectinput5">Username</label>
 													<div class="col-md-9">
 														<input type="text" id="projectinput5" class="form-control"
-															value="${pm.account.username}" name="company"
-															readonly="readonly">
+															value="${pm.account.username}" name="username" disabled>
 													</div>
 												</div>
 												<div class="form-group row">
 													<label class="col-md-3 label-control" for="projectinput5">Điểm</label>
 													<div class="col-md-9">
 														<input type="number" id="projectinput5"
-															class="form-control" value="${pm.point}" name="company">
+															class="form-control" value="${pm.point}" name="point">
 													</div>
 												</div>
 												<div class="form-group row">
@@ -210,18 +213,18 @@
 													<div class="col-md-9">
 														<input type="text" id="projectinput5" class="form-control"
 															value="<fmt:formatDate value="${pm.createAt}" pattern="HH:mm:ss dd-MM-yyy " />"
-															name="company" readonly="readonly">
+															name="createAt" disabled>
 													</div>
 												</div>
-
+												<input type="hidden" name="_method" value="PUT">
 											</div>
 											<div class="form-actions right">
 												<a href="./point/member.html"><button type="button"
 														class="btn btn-danger mr-1">
-														<i class="ft-x"></i> Cancel
+														<i class="ft-x"></i> Trở về
 													</button> </a>
 												<button type="submit" class="btn btn-primary">
-													<i class="la la-check-square-o"></i> Save
+													<i class="la la-check-square-o"></i> Cập nhật
 												</button>
 											</div>
 

@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <base href="${pageContext.servletContext.contextPath}/">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Quản lý thành viên</title>
+<title>Quản Lý POINT LOG</title>
 <link rel="apple-touch-icon"
 	href="app-assets\images\ico\apple-icon-120.png">
 <link rel="shortcut icon" type="image/x-icon"
@@ -104,30 +105,24 @@
 										<thead>
 											<tr>
 												<th>#</th>
-												<th>IDLog</th>
 												<th>Username</th>
-												<th>Ngày</th>
+												<th>IDLog</th>
 												<th>Mô Tả</th>
-												<th></th>
+												<th>Ngày</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<th scope="row">1</th>
-												<td>Mark</td>
-												<td>Otto</td>
-												<td>Mark</td>
-												<td>Otto</td>
-
-											</tr>
-											<tr>
-												<th scope="row">2</th>
-												<td>Mark</td>
-												<td>Otto</td>
-												<td>Mark</td>
-												<td>Otto</td>
-
-											</tr>
+											<c:set var="count" value="1" />
+											<c:forEach var="pointLog" items="${listPointLog}">
+												<tr>
+													<th scope="row">${count}</th>
+													<td>${pointLog.pointMember.account.username}</td>
+													<td>${pointLog.id}</td>
+													<td>${pointLog.des}</td>
+													<td>${pointLog.createAt}</td>
+												</tr>
+												<c:set var="count" value="${count + 1 }" />
+											</c:forEach>
 										</tbody>
 									</table>
 								</div>

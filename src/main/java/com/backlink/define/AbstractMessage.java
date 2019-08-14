@@ -21,5 +21,7 @@ public interface AbstractMessage {
 	final String MESSAGE_RIGISTER_PASSWORD_MUST_MIN_8_LENGTHS = "Mật khẩu phải lớn hơn hoặc bằng 8 kí tự";
 	final String MESSAGE_RIGISTER_SUCCESS = "Đăng kí tài khoản thành công";
 	
+	final String MESSAGE_UPDATE_SUCCESS = "Cập nhật điểm cho %s thành công";
+	
 	final String MESSAGE_REQUIRE_INPUT = "Vui lòng nhập đầy đủ thông tin";
 }
