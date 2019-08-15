@@ -1,6 +1,7 @@
 package com.backlink.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,8 +33,9 @@ public class AccountService implements AbstractMessage, ServiceObject<Account, S
 
 	@Override
 	public Account findById(String id) {
-		if (accountRepository.existsById(id)) {
-			return accountRepository.getOne(id);
+		Optional<Account> op = accountRepository.findById(id);
+		if(op.isPresent()) {
+			return op.get();
 		}
 		return null;
 	}

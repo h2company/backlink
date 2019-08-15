@@ -7,12 +7,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.backlink.entities.Account;
 import com.backlink.entities.AccountInfo;
+import com.backlink.entities.PointMember;
 import com.backlink.services.AccountInfoService;
 import com.backlink.services.AccountService;
+import com.backlink.util.Response;
 
 @Controller
 public class AccountController {
@@ -38,4 +43,24 @@ public class AccountController {
 		md.addAttribute("active", "accountManager");
 		return "account-list";
 	}
+
+	@PostMapping("account/manager")
+	public String updateAccount(ModelMap md, RedirectAttributes red, @RequestParam("id") String idAccountInfo,
+			@RequestParam String username, @RequestParam String fullname, @RequestParam String address,
+			@RequestParam String email, @RequestParam String phone, @RequestParam("_method") String _method) {
+		String redirect = "redirect:/account/manager.html";
+		if ("PUT".equals(_method)) {
+			try {
+				Response response = accountInfoService.update(username, fullname, email, address, phone);
+				red.addFlashAttribute("response", response);
+				md.addAttribute("aci", (AccountInfo) response.getData());
+				redirect += "?id=" + idAccountInfo;
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
+
+		return redirect;
+	}
+
 }

@@ -169,11 +169,17 @@
 								<div class="card-content collpase show">
 									<div class="card-body">
 										<div class="card-text">											
-											<p><span style="color: red">*Chú ý:</span> Hãy cẩn trọng khi thay đổi bất kì thông tin nào.</p>
+											<p><span style="color: red">Chú ý:</span> Hãy cẩn trọng khi thay đổi bất kì thông tin nào.</p>
+											<p><span style="color: red">(*):</span> Thông tin bắt buộc.</p>
 										</div>
 										<form class="form form-horizontal" action="./account/manager.html" method="POST">
-											<div class="form-body">
-
+											<c:if test="${not empty response}">
+												<div class="alert alert-${response.status} mb-2 text-center"
+													role="alert">
+													<strong>${response.message}</strong>
+												</div>
+											</c:if>
+											<div class="form-body">	
 												<h4 class="form-section">
 													<i class="ft-clipboard"></i>Thông Tin Cá Nhân
 												</h4>
@@ -181,17 +187,17 @@
 													<label class="col-md-3 label-control" for="projectinput5">UserName</label>
 													<div class="col-md-9">
 														<input type="text" id="projectinput5" class="form-control"
-															value="${aci.account.username}" name="company"
+															value="${aci.account.username}" name="username"
 															readonly="readonly">
 													</div>
 												</div>
 												<div class="form-group row">
-													<label class="col-md-3 label-control" for="projectinput5">Tên
+													<label class="col-md-3 label-control" for="projectinput5"><span style="color:red">(*)</span> Tên
 														Thành Viên</label>
 													<div class="col-md-9">
 														<input type="text" id="projectinput5" class="form-control"
 															value="${aci.account.accountInfo.fullname}"
-															name="company">
+															name="fullname">
 													</div>
 												</div>
 												<div class="form-group row">
@@ -199,23 +205,23 @@
 														Chỉ</label>
 													<div class="col-md-9">
 														<input type="text" id="projectinput5" class="form-control"
-															value="${aci.account.accountInfo.address}" name="company">
+															value="${aci.account.accountInfo.address}" name="address">
 													</div>
 												</div>
 												<div class="form-group row">
-													<label class="col-md-3 label-control" for="projectinput5">Email</label>
+													<label class="col-md-3 label-control" for="projectinput5"><span style="color:red">(*)</span> Email</label>
 													<div class="col-md-9">
-														<input type="text" id="projectinput5" class="form-control"
-															value="${aci.account.email}" name="company">
+														<input type="email" id="projectinput5" class="form-control"
+															value="${aci.account.email}" name="email">
 													</div>
 												</div>
 												<div class="form-group row">
-													<label class="col-md-3 label-control" for="projectinput5">Số
+													<label class="col-md-3 label-control" for="projectinput5"><span style="color:red">(*)</span> Số
 														Điện Thoại</label>
 													<div class="col-md-9">
 														<input type="number" id="projectinput5"
 															class="form-control" value="${aci.account.phone}"
-															name="company">
+															name="phone">
 													</div>
 												</div>
 												<div class="form-group row">
@@ -224,11 +230,21 @@
 													<div class="col-md-9">
 														<input type="text" id="projectinput5" class="form-control"
 															value="<fmt:formatDate value="${aci.createAt}" pattern="HH:mm:ss dd-MM-yyy " />"
-															name="company" readonly="readonly">
+															name="createAt" disabled="disabled">
 													</div>
-												</div>
-
+												</div>	
+												<div class="form-group row">
+													<label class="col-md-3 label-control" for="projectinput5">Ngày
+														Cập Nhật</label>
+													<div class="col-md-9">
+														<input type="text" id="projectinput5" class="form-control"
+															value="<fmt:formatDate value="${aci.updateAt}" pattern="HH:mm:ss dd-MM-yyy " />"
+															name="createAt" disabled="disabled">
+													</div>
+												</div>												
 											</div>
+											<input type="hidden" name="id" value="${aci.id}" />
+											<input type="hidden" name="_method" value="PUT" />											
 											<div class="form-actions right">
 												<button type="submit" class="btn btn-primary mr-1">
 													<i class="la la-check-square-o"></i> Cập nhật

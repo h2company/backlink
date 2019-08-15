@@ -9,19 +9,21 @@ public interface AbstractMessage {
 	final String STATUS_ERROR = "danger";
 	final String STATUS_SECCESS = "success";
 	final String STATUS_WARNING = "warning";
+	final String STATUS_INFO = "info";
 	
-	final String MESSAGE_EMAIL_INVALID = "Email không hợp lệ";
-	final String MESSAGE_PHONE_INVALID = "Số điện thoại không hợp lệ. Phải là 10 số <br>(VD: 0377312606)";
+	final String MESSAGE_EMAIL_INVALID = "Email không hợp lệ. (VD: thiengiau98@gmail.com)";
+	final String MESSAGE_PHONE_INVALID = "Số điện thoại không hợp lệ. Phải là 10 số và bắt đầu bằng 0 <br>(VD: 0377312606)";
 
 	final String MESSAGE_ACCOUNT_NULL = "Tài khoản hoặc mật khẩu không đúng";
 	final String MESSAGE_ACCOUNT_SUCCESS = "Đăng nhập thành công";
+	final String MESSAGE_ACCOUNT_NOT_EXIST_USERNAME = "Tài khoản không tồn tại";
 	
 	final String MESSAGE_RIGISTER_EXIST = "Tên đăng nhập đã tồn tại";
 	final String MESSAGE_RIGISTER_NOT_SAME_PASSWORD = "Mật khẩu không trùng khớp";
 	final String MESSAGE_RIGISTER_PASSWORD_MUST_MIN_8_LENGTHS = "Mật khẩu phải lớn hơn hoặc bằng 8 kí tự";
 	final String MESSAGE_RIGISTER_SUCCESS = "Đăng kí tài khoản thành công";
 	
-	final String MESSAGE_UPDATE_SUCCESS = "Cập nhật điểm cho %s thành công";
+	final String MESSAGE_UPDATE_SUCCESS = "Cập nhật cho %s thành công";
 	
 	final String MESSAGE_REQUIRE_INPUT = "Vui lòng nhập đầy đủ thông tin";
 }
