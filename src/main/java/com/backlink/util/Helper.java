@@ -33,11 +33,10 @@ public class Helper {
 	}
 
 	public static boolean notNull(String... data) {
-		boolean result = false;
+		boolean result = true;
 		if (data != null && data.length > 0) {
-			result = !result;
 			for (String field : data) {
-				if (field.equals("")) {
+				if (field.trim().equals("")) {
 					result = !result;
 					break;
 				}
