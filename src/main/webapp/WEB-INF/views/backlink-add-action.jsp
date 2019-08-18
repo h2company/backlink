@@ -152,6 +152,14 @@
 											</div>
 											<div class="form-group row">
 												<label class="col-md-3 label-control" for="projectinput5"><span
+													style="color: red">(*)</span> Điểm quy đổi</label>
+												<div class="col-md-9">
+													<input type="text" id="projectinput5" class="form-control"
+														value="" name="username">
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-md-3 label-control" for="projectinput5"><span
 													style="color: red">(*)</span> Mã theo dõi</label>
 												<div class="col-md-9">
 													<input type="text" id="projectinput5" class="form-control"
