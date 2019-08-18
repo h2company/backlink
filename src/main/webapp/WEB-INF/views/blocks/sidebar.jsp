@@ -12,7 +12,33 @@
       <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
           <li class=" nav-item ${active.equals("index") ? "open" : ""}"><a href="index.html"><i class="ft-home"></i><span class="menu-title" data-i18n="">Trang Chủ</span></a></li>
-          <li class=" nav-item ${active.contains("point") ? "open" : ""}"><a href="#"><i class="ft-aperture"></i><span class="menu-title" data-i18n="">Quản Lý Điểm</span></a>
+          <li class=" nav-item ${active.startsWith("backlink") ? "open" : ""}"><a href="#"><i class="ft-bar-chart-2"></i><span class="menu-title" data-i18n="">Quản Lý Backlink</span></a>
+            <ul class="menu-content">
+              <li class="${active.equals("backlinkaddBackLink") ? "active" : ""}"><a class="menu-item" href="backlink/add-backlink.html">Thêm Backlink</a>
+              </li> 
+              <li class="${active.equals("backlinkaddAction") ? "active" : ""}"><a class="menu-item" href="backlink/add-action.html">Thêm Yêu Cầu Hành Động</a>
+              </li>  
+              <li class="${active.equals("backlinkstatisticalAccess") ? "active" : ""}"><a class="menu-item" href="backlink/statistical-access.html">Thống Kê Truy Cập</a>
+              </li>            
+            </ul>
+          </li>   
+          <li class=" nav-item ${active.startsWith("pay") ? "open" : ""}"><a href="#"><i class="ft-zap"></i><span class="menu-title" data-i18n="">Thanh Toán</span></a>
+            <ul class="menu-content">
+              <li class="${active.equals("payRecharge") ? "active" : ""}"><a class="menu-item" href="pay/recharge.html">Nạp tiền</a>
+              </li> 
+              <li class="${active.equals("payTransactionHistory") ? "active" : ""}"><a class="menu-item" href="pay/transaction-history.html">Lịch sử giao dịch</a>
+              </li>            
+            </ul>
+          </li>   
+          <li class=" nav-item ${active.startsWith("revenue") ? "open" : ""}"><a href="#"><i class="ft-sunset"></i><span class="menu-title" data-i18n="">Quản Lý Doanh Thu</span></a>
+            <ul class="menu-content">
+              <li class="${active.equals("revenueAdvertisement") ? "active" : ""}"><a class="menu-item" href="revenue/advertisement.html">DT Quảng Cáo</a>
+              </li> 
+              <li class="${active.equals("revenueExchange") ? "active" : ""}"><a class="menu-item" href="revenue/exchange.html">DT Giao Dịch</a>
+              </li>           
+            </ul>
+          </li>  
+          <li class=" nav-item ${active.startsWith("point") ? "open" : ""}"><a href="#"><i class="ft-aperture"></i><span class="menu-title" data-i18n="">Quản Lý Điểm</span></a>
             <ul class="menu-content">
               <li class="${active.equals("pointMember") ? "active" : ""}"><a class="menu-item" href="point/member.html">Thành Viên</a>
               </li>
@@ -20,11 +46,10 @@
               </li>              
             </ul>
           </li> 
-          <li class=" nav-item ${active.contains("account") ? "open" : ""}"><a href="#"><i class="ft-users"></i><span class="menu-title" data-i18n="">Quản Lý Tài Khoản</span></a>
+          <li class=" nav-item ${active.startsWith("account") ? "open" : ""}"><a href="#"><i class="ft-users"></i><span class="menu-title" data-i18n="">Quản Lý Tài Khoản</span></a>
             <ul class="menu-content">
               <li class="${active.equals("accountManager") ? "active" : ""}"><a class="menu-item" href="account/manager.html">Thành Viên</a>
-              </li>
-              </li>              
+              </li>            
             </ul>
           </li>           
         </ul>
