@@ -32,7 +32,7 @@ public class MainController {
 		md.addAttribute("active", "index");
 		return "index";
 	}
-
+	
 	@GetMapping(value = "login")
 	public String viewLogin() {
 		return "login";
