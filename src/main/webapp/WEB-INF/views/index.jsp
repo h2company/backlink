@@ -220,6 +220,138 @@
 							</div>
 						</div>
 					</div>
+					<div class="col-12">
+						<div class="card">
+							<div class="card-header">
+								<h4 class="card-title">Danh sách Backlink và Action cần trao đổi</h4>
+								<a class="heading-elements-toggle"><i
+									class="la la-ellipsis-v font-medium-3"></i></a>
+								<div class="heading-elements">
+									<ul class="list-inline mb-0">
+										<li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+										<li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+										<li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+										<li><a data-action="close"><i class="ft-x"></i></a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="card-content collapse show">
+								<div class="table-responsive">
+									<table class="table table-bordered table-striped">
+										<thead>
+											<tr>
+												<th>#</th>
+												<th>Mã BL</th>
+												<th>Loại BL</th>
+												<th>Điểm quy đổi</th>
+												<th>Thời gian</th>
+												<th>Hành Động</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>1</td>
+												<td>BL54878</td>
+												<td>Backlink</td>
+												<td>10</td>
+												<td>14:25:48 14-08-2019	</td>
+												<td class="text-center">
+													<button type="button" class="btn btn-outline-primary mr-1">
+														<i class="ft-eye"></i> Chi tiết
+													</button>
+													<button type="button" class="btn btn-outline-info mr-1">
+														<i class="ft-repeat"></i> Trao đổi
+													</button>
+													<button type="button" class="btn btn-outline-success mr-1">
+														<i class="ft-camera"></i> Theo dõi
+													</button>
+												</td>
+											</tr>
+											<tr>
+												<td>2</td>
+												<td>BL54878</td>
+												<td>Backlink</td>
+												<td>10</td>
+												<td>14:05:48 19-08-2019	</td>
+												<td class="text-center">
+													<button type="button" class="btn btn-outline-primary mr-1">
+														<i class="ft-eye"></i> Chi tiết
+													</button>
+													<button type="button" class="btn btn-outline-info mr-1">
+														<i class="ft-repeat"></i> Trao đổi
+													</button>
+													<button type="button" class="btn btn-outline-success mr-1">
+														<i class="ft-camera"></i> Theo dõi
+													</button>
+												</td>
+											</tr>
+											<tr>
+												<td>3</td>
+												<td>BL54879</td>
+												<td>Backlink</td>
+												<td>10</td>
+												<td>14:15:48 19-08-2019	</td>
+												<td class="text-center">
+													<button type="button" class="btn btn-outline-primary mr-1">
+														<i class="ft-eye"></i> Chi tiết
+													</button>
+													<button type="button" class="btn btn-outline-info mr-1">
+														<i class="ft-repeat"></i> Trao đổi
+													</button>
+													<button type="button" class="btn btn-outline-success mr-1">
+														<i class="ft-camera"></i> Theo dõi
+													</button>
+												</td>
+											</tr>
+											<tr>
+												<td>4</td>
+												<td>BL54878</td>
+												<td>Backlink</td>
+												<td>10</td>
+												<td>02:25:48 20-08-2019	</td>
+												<td class="text-center">
+													<button type="button" class="btn btn-outline-primary mr-1">
+														<i class="ft-eye"></i> Chi tiết
+													</button>
+													<button type="button" class="btn btn-outline-info mr-1">
+														<i class="ft-repeat"></i> Trao đổi
+													</button>
+													<button type="button" class="btn btn-outline-success mr-1">
+														<i class="ft-camera"></i> Theo dõi
+													</button>
+												</td>
+											</tr>
+											<tr>
+												<td>5</td>
+												<td>BL54878</td>
+												<td>Action</td>
+												<td>15</td>
+												<td>02:25:48 20-08-2019	</td>
+												<td class="text-center">
+													<button type="button" class="btn btn-outline-primary mr-1">
+														<i class="ft-eye"></i> Chi tiết
+													</button>
+													<button type="button" class="btn btn-outline-info mr-1">
+														<i class="ft-repeat"></i> Trao đổi
+													</button>
+													<button type="button" class="btn btn-outline-success mr-1">
+														<i class="ft-camera"></i> Theo dõi
+													</button>
+												</td>
+											</tr>
+											<tr>
+												<td colspan="6" class="text-center">
+													<button type="button" class="btn btn-outline-warning mr-1">
+														<i class="ft-repeat"></i> Xem thêm
+													</button>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 				<!--/ Emails Products & Avg Deals -->
 				<!--/ Products sell and New Orders -->
