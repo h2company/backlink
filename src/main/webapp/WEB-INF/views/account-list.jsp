@@ -90,6 +90,12 @@
 							<div class="card">
 								<div class="card-header">
 									<h4 class="card-title">Thêm, xóa, sửa thành viên</h4>
+									<c:if test="${not empty response}">
+												<div class="alert alert-${response.status} mb-2 mt-2 text-center"
+													role="alert">
+													<strong>${response.message}</strong>
+												</div>
+											</c:if>
 									<a class="heading-elements-toggle"><i
 										class="la la-ellipsis-v font-medium-3"></i></a>
 									<div class="heading-elements">
@@ -133,7 +139,7 @@
 																	type="button" class="btn btn-outline-info mr-1">
 																	<i class="ft-edit"></i>
 																</button></a>
-															<button type="button" class="btn btn-outline-danger mr-1">
+															<button type="button" class="btn btn-outline-danger mr-1 delete-item" data-id="${accountInfo.id }">
 																<i class="ft-trash-2"></i>
 															</button></td>
 													</tr>
@@ -279,6 +285,8 @@
 	<!-- BEGIN Vendor JS-->
 
 	<!-- BEGIN: Page Vendor JS-->
+	<script src="app-assets/vendors/js/extensions/sweetalert2.all.js" type="text/javascript"></script>
+	<script src="app-assets/js/scripts/extensions/sweet-alerts.min.js" type="text/javascript"></script>
 	<!-- END: Page Vendor JS-->
 
 	<!-- BEGIN: Theme JS-->
@@ -289,5 +297,47 @@
 	<script src="app-assets\vendors\js\jquery.sharrre.js"
 		type="text/javascript"></script>
 	<!-- END: Theme JS-->
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var classname = document.getElementsByClassName("delete-item");
+			var removeItem = function() {
+			    var attribute = this.getAttribute("data-id");
+			    swal({
+		            title: 'Dữ liệu sẽ biến mất?',
+		            text: 'Bạn đang xóa tk với ID là: ' + attribute,
+		            type: 'warning',
+		            showCancelButton: true,
+		            confirmButtonColor: '#3085d6',
+		            cancelButtonColor: '#d33',
+		            cancelButtonText: 'Hủy',
+		            confirmButtonText: 'Xóa'
+		          }).then(function (result) {
+		        	  if(result.value){
+		        		  var form = document.createElement("form");
+		        		    var element1 = document.createElement("input"); 
+		        		    var element2 = document.createElement("input");  
+
+		        		    form.method = "POST";
+		        		    form.action = "account/manager.html";   
+
+		        		    element1.value= attribute;
+		        		    element1.name="id";
+		        		    form.appendChild(element1);  
+
+		        		    element2.value="DELETE";
+		        		    element2.name="_method";
+		        		    form.appendChild(element2);
+
+		        		    document.body.appendChild(form);
+
+		        		    form.submit();
+		        	  }
+		          }).catch(swal.noop);
+			};
+			Array.from(classname).forEach(function(element) {
+			      element.addEventListener('click', removeItem);			      
+			});
+		});
+	</script>
 </body>
 </html>

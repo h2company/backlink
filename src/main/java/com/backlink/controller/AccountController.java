@@ -46,8 +46,9 @@ public class AccountController {
 
 	@PostMapping("account/manager")
 	public String updateAccount(ModelMap md, RedirectAttributes red, @RequestParam("id") String idAccountInfo,
-			@RequestParam String username, @RequestParam String fullname, @RequestParam String address,
-			@RequestParam String email, @RequestParam String phone, @RequestParam("_method") String _method) {
+			@RequestParam(required = false) String username, @RequestParam(required = false) String fullname,
+			@RequestParam(required = false) String address, @RequestParam(required = false) String email,
+			@RequestParam(required = false) String phone, @RequestParam("_method") String _method) {
 		String redirect = "redirect:/account/manager.html";
 		if ("PUT".equals(_method)) {
 			try {
@@ -55,6 +56,13 @@ public class AccountController {
 				red.addFlashAttribute("response", response);
 				md.addAttribute("aci", (AccountInfo) response.getData());
 				redirect += "?id=" + idAccountInfo;
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		if ("DELETE".equals(_method)) {
+			try {
+				red.addFlashAttribute("response", new Response("success", "Xóa tài khoản với ID: " + idAccountInfo + " thành công "));
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
