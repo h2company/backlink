@@ -91,11 +91,12 @@
 								<div class="card-header">
 									<h4 class="card-title">Thêm, xóa, sửa thành viên</h4>
 									<c:if test="${not empty response}">
-												<div class="alert alert-${response.status} mb-2 mt-2 text-center"
-													role="alert">
-													<strong>${response.message}</strong>
-												</div>
-											</c:if>
+										<div
+											class="alert alert-${response.status} mb-2 mt-2 text-center"
+											role="alert">
+											<strong>${response.message}</strong>
+										</div>
+									</c:if>
 									<a class="heading-elements-toggle"><i
 										class="la la-ellipsis-v font-medium-3"></i></a>
 									<div class="heading-elements">
@@ -125,25 +126,29 @@
 											<tbody>
 												<c:set var="count" value="1" />
 												<c:forEach var="accountInfo" items="${listAccountInfo}">
-													<tr>
-														<th scope="row">${count}</th>
-														<td>${accountInfo.account.username}</td>
-														<td>${accountInfo.fullname}</td>
-														<td>${accountInfo.address}</td>
-														<td>${accountInfo.account.email}</td>
-														<td>${accountInfo.account.phone}</td>
-														<td><fmt:formatDate value="${accountInfo.createAt}"
-																pattern="HH:mm:ss dd-MM-yyy " /></td>
-														<td class="text-center"><a
-															href="./account/manager.html?id=${accountInfo.id }"><button
-																	type="button" class="btn btn-outline-info mr-1">
-																	<i class="ft-edit"></i>
-																</button></a>
-															<button type="button" class="btn btn-outline-danger mr-1 delete-item" data-id="${accountInfo.id }">
-																<i class="ft-trash-2"></i>
-															</button></td>
-													</tr>
-													<c:set var="count" value="${count + 1 }" />
+													<c:if test="${!accountInfo.account.deleted}">
+														<tr>
+															<th scope="row">${count}</th>
+															<td>${accountInfo.account.username}</td>
+															<td>${accountInfo.fullname}</td>
+															<td>${accountInfo.address}</td>
+															<td>${accountInfo.account.email}</td>
+															<td>${accountInfo.account.phone}</td>
+															<td><fmt:formatDate value="${accountInfo.createAt}"
+																	pattern="HH:mm:ss dd-MM-yyy " /></td>
+															<td class="text-center"><a
+																href="./account/manager.html?id=${accountInfo.id }"><button
+																		type="button" class="btn btn-outline-info mr-1">
+																		<i class="ft-edit"></i>
+																	</button></a>
+																<button type="button"
+																	class="btn btn-outline-danger mr-1 delete-item"
+																	data-id="${accountInfo.account.username }">
+																	<i class="ft-trash-2"></i>
+																</button></td>
+														</tr>
+														<c:set var="count" value="${count + 1 }" />
+													</c:if>
 												</c:forEach>
 											</tbody>
 										</table>
@@ -174,18 +179,24 @@
 								</div>
 								<div class="card-content collpase show">
 									<div class="card-body">
-										<div class="card-text">											
-											<p><span style="color: red">Chú ý:</span> Hãy cẩn trọng khi thay đổi bất kì thông tin nào.</p>
-											<p><span style="color: red">(*):</span> Thông tin bắt buộc.</p>
+										<div class="card-text">
+											<p>
+												<span style="color: red">Chú ý:</span> Hãy cẩn trọng khi
+												thay đổi bất kì thông tin nào.
+											</p>
+											<p>
+												<span style="color: red">(*):</span> Thông tin bắt buộc.
+											</p>
 										</div>
-										<form class="form form-horizontal" action="./account/manager.html" method="POST">
+										<form class="form form-horizontal"
+											action="./account/manager.html" method="POST">
 											<c:if test="${not empty response}">
 												<div class="alert alert-${response.status} mb-2 text-center"
 													role="alert">
 													<strong>${response.message}</strong>
 												</div>
 											</c:if>
-											<div class="form-body">	
+											<div class="form-body">
 												<h4 class="form-section">
 													<i class="ft-clipboard"></i>Thông Tin Cá Nhân
 												</h4>
@@ -198,8 +209,8 @@
 													</div>
 												</div>
 												<div class="form-group row">
-													<label class="col-md-3 label-control" for="projectinput5"><span style="color:red">(*)</span> Tên
-														Thành Viên</label>
+													<label class="col-md-3 label-control" for="projectinput5"><span
+														style="color: red">(*)</span> Tên Thành Viên</label>
 													<div class="col-md-9">
 														<input type="text" id="projectinput5" class="form-control"
 															value="${aci.account.accountInfo.fullname}"
@@ -215,19 +226,30 @@
 													</div>
 												</div>
 												<div class="form-group row">
-													<label class="col-md-3 label-control" for="projectinput5"><span style="color:red">(*)</span> Email</label>
+													<label class="col-md-3 label-control" for="projectinput5"><span
+														style="color: red">(*)</span> Email</label>
 													<div class="col-md-9">
-														<input type="email" id="projectinput5" class="form-control"
-															value="${aci.account.email}" name="email">
+														<input type="email" id="projectinput5"
+															class="form-control" value="${aci.account.email}"
+															name="email">
 													</div>
 												</div>
 												<div class="form-group row">
-													<label class="col-md-3 label-control" for="projectinput5"><span style="color:red">(*)</span> Số
-														Điện Thoại</label>
+													<label class="col-md-3 label-control" for="projectinput5"><span
+														style="color: red">(*)</span> Số Điện Thoại</label>
 													<div class="col-md-9">
 														<input type="number" id="projectinput5"
 															class="form-control" value="${aci.account.phone}"
 															name="phone">
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-md-3 label-control" for="projectinput5">Vai trò</label>
+													<div class="col-md-9">
+														<select class="form-control" id="basicSelect" name="role">
+															<option value="0" ${aci.account.role == 0 ? "selected" : "" }>Thành Viên</option>
+															<option value="1" ${aci.account.role == 1 ? "selected" : "" }>Admin</option>
+														</select>
 													</div>
 												</div>
 												<div class="form-group row">
@@ -238,7 +260,7 @@
 															value="<fmt:formatDate value="${aci.createAt}" pattern="HH:mm:ss dd-MM-yyy " />"
 															name="createAt" disabled="disabled">
 													</div>
-												</div>	
+												</div>
 												<div class="form-group row">
 													<label class="col-md-3 label-control" for="projectinput5">Ngày
 														Cập Nhật</label>
@@ -247,10 +269,10 @@
 															value="<fmt:formatDate value="${aci.updateAt}" pattern="HH:mm:ss dd-MM-yyy " />"
 															name="createAt" disabled="disabled">
 													</div>
-												</div>												
+												</div>
 											</div>
-											<input type="hidden" name="id" value="${aci.id}" />
-											<input type="hidden" name="_method" value="PUT" />											
+											<input type="hidden" name="id" value="${aci.id}" /> <input
+												type="hidden" name="_method" value="PUT" />
 											<div class="form-actions right">
 												<button type="submit" class="btn btn-primary mr-1">
 													<i class="la la-check-square-o"></i> Cập nhật
@@ -285,8 +307,10 @@
 	<!-- BEGIN Vendor JS-->
 
 	<!-- BEGIN: Page Vendor JS-->
-	<script src="app-assets/vendors/js/extensions/sweetalert2.all.js" type="text/javascript"></script>
-	<script src="app-assets/js/scripts/extensions/sweet-alerts.min.js" type="text/javascript"></script>
+	<script src="app-assets/vendors/js/extensions/sweetalert2.all.js"
+		type="text/javascript"></script>
+	<script src="app-assets/js/scripts/extensions/sweet-alerts.min.js"
+		type="text/javascript"></script>
 	<!-- END: Page Vendor JS-->
 
 	<!-- BEGIN: Theme JS-->
@@ -321,7 +345,7 @@
 		        		    form.action = "account/manager.html";   
 
 		        		    element1.value= attribute;
-		        		    element1.name="id";
+		        		    element1.name="username";
 		        		    form.appendChild(element1);  
 
 		        		    element2.value="DELETE";

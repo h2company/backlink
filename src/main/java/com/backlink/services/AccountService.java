@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.backlink.define.AbstractMessage;
 import com.backlink.entities.Account;
 import com.backlink.repositories.AccountRepository;
+import com.backlink.specification.AccountSpecs;
 import com.backlink.util.Decrypt;
 import com.backlink.util.Helper;
 import com.backlink.util.Response;
@@ -30,7 +31,7 @@ public class AccountService implements AbstractMessage, ServiceObject<Account, S
 	public List<Account> findAll() {
 		return accountRepository.findAll();
 	}
-
+	
 	@Override
 	public Account findById(String id) {
 		Optional<Account> op = accountRepository.findById(id);

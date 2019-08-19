@@ -24,6 +24,7 @@ public interface AbstractMessage {
 	final String MESSAGE_RIGISTER_SUCCESS = "Đăng kí tài khoản thành công";
 	
 	final String MESSAGE_UPDATE_SUCCESS = "Cập nhật cho %s thành công";
+	final String MESSAGE_DELETE_ACCOUNT_SUCCESS = "Xóa tài khoản %s thành công ";
 	
 	final String MESSAGE_REQUIRE_INPUT = "Vui lòng nhập đầy đủ thông tin";
 }
