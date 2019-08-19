@@ -9,7 +9,10 @@ import javax.persistence.TemporalType;
 
 @MappedSuperclass
 public abstract class AbstractModel{
-
+	
+	@Column(name = "isDeleted")
+	protected boolean deleted = false;
+	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "createAt")
 	protected Date createAt;
@@ -17,6 +20,14 @@ public abstract class AbstractModel{
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "updateAt")
 	protected Date updateAt;
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
 
 	public Date getCreateAt() {
 		return createAt;

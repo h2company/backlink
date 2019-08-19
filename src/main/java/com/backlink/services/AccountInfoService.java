@@ -21,10 +21,10 @@ public class AccountInfoService implements AbstractMessage, ServiceObject<Accoun
 
 	@Autowired
 	private AccountInfoRepository accountInfoRepository;
-	
+
 	@Autowired
 	private AccountService accountService;
-	
+
 	@Autowired
 	private ResponseService responseService;
 
@@ -32,7 +32,7 @@ public class AccountInfoService implements AbstractMessage, ServiceObject<Accoun
 	public List<AccountInfo> findAll() {
 		return accountInfoRepository.findAll();
 	}
-	
+
 	public AccountInfo getWithUsername(String username) {
 		return accountInfoRepository.getWithUsername(username);
 	}
@@ -40,7 +40,7 @@ public class AccountInfoService implements AbstractMessage, ServiceObject<Accoun
 	@Override
 	public AccountInfo findById(Integer id) {
 		Optional<AccountInfo> aci = accountInfoRepository.findById(id);
-		if(aci.isPresent()) {
+		if (aci.isPresent()) {
 			return aci.get();
 		}
 		return null;
@@ -55,36 +55,48 @@ public class AccountInfoService implements AbstractMessage, ServiceObject<Accoun
 	public AccountInfo update(AccountInfo accountInfo) {
 		return accountInfoRepository.saveAndFlush(accountInfo);
 	}
-	
-	public Response update(String username, String fullname, String email, String address , String phone) {
+
+	public Response updateActive(String username) {
 		Account acc = accountService.findById(username);
-		if(acc == null) {
+		if (acc == null) {
 			return responseService.createResponseObject(STATUS_ERROR, MESSAGE_ACCOUNT_NOT_EXIST_USERNAME);
 		}
-		if(!Helper.notNull(email, phone, fullname)) {
+		acc.setDeleted(true);
+		acc.getAccountInfo().setDeleted(true);
+		accountService.update(acc);
+		return responseService.createResponseObject(STATUS_SECCESS,
+				String.format(MESSAGE_DELETE_ACCOUNT_SUCCESS, username));
+	}
+
+	public Response update(String username, String fullname, String email, String address, String phone, int role) {
+		Account acc = accountService.findById(username);
+		if (acc == null) {
+			return responseService.createResponseObject(STATUS_ERROR, MESSAGE_ACCOUNT_NOT_EXIST_USERNAME);
+		}
+		if (!Helper.notNull(email, phone, fullname)) {
 			return responseService.createResponseObject(STATUS_ERROR, MESSAGE_REQUIRE_INPUT);
 		}
-		if(!Helper.validateEmail(email)) {
+		if (!Helper.validateEmail(email)) {
 			return responseService.createResponseObject(STATUS_ERROR, MESSAGE_EMAIL_INVALID);
 		}
-		if(!Helper.validatePhone(phone)) {
+		if (!Helper.validatePhone(phone)) {
 			return responseService.createResponseObject(STATUS_ERROR, MESSAGE_PHONE_INVALID);
 		}
 		acc.setEmail(email);
 		acc.setPhone(phone);
+		acc.setRole(role);
 		acc.setUpdateAt(new Date());
 		acc.getAccountInfo().setUpdateAt(new Date());
 		acc.getAccountInfo().setFullname(fullname);
 		acc.getAccountInfo().setAddress(address);
 		accountService.update(acc);
-		return responseService.createResponseObject(STATUS_SECCESS, String.format(MESSAGE_UPDATE_SUCCESS, username));
+		return new Response(STATUS_SECCESS, String.format(MESSAGE_UPDATE_SUCCESS, username), acc);
 	}
-	
+
 	@Override
 	public void delete(Integer id) {
 		accountInfoRepository.deleteById(id);
 
 	}
-
 
 }

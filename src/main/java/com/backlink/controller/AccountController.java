@@ -2,6 +2,8 @@ package com.backlink.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -45,24 +47,29 @@ public class AccountController {
 	}
 
 	@PostMapping("account/manager")
-	public String updateAccount(ModelMap md, RedirectAttributes red, @RequestParam("id") String idAccountInfo,
+	public String updateAccount(HttpSession session, ModelMap md, RedirectAttributes red, @RequestParam(value = "id", required = false) String idAccountInfo,
 			@RequestParam(required = false) String username, @RequestParam(required = false) String fullname,
 			@RequestParam(required = false) String address, @RequestParam(required = false) String email,
-			@RequestParam(required = false) String phone, @RequestParam("_method") String _method) {
+			@RequestParam(required = false) String phone, @RequestParam("_method") String _method,
+			@RequestParam("role") int role) {
 		String redirect = "redirect:/account/manager.html";
 		if ("PUT".equals(_method)) {
 			try {
-				Response response = accountInfoService.update(username, fullname, email, address, phone);
+				Response response = accountInfoService.update(username, fullname, email, address, phone, role);
 				red.addFlashAttribute("response", response);
-				md.addAttribute("aci", (AccountInfo) response.getData());
-				redirect += "?id=" + idAccountInfo;
+				if(((Account)session.getAttribute("auth")).getUsername().equals(username)) {
+					session.setAttribute("auth", (Account) response.getData());
+					redirect = "redirect:/index.html";
+				}else {
+					redirect += "?id=" + idAccountInfo;
+				}
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
 		}
 		if ("DELETE".equals(_method)) {
 			try {
-				red.addFlashAttribute("response", new Response("success", "Xóa tài khoản với ID: " + idAccountInfo + " thành công "));
+				red.addFlashAttribute("response", accountInfoService.updateActive(username));
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
